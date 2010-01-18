@@ -1,9 +1,5 @@
 # Django settings for gitube project.
 
-# Custom environment
-import os
-os.environ['DJANGO_ENV'] = 'dev'
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -83,14 +79,8 @@ INSTALLED_APPS = (
 )
 
 
-
-if os.environ.has_key('DJANGO_ENV'):
-    # TODO get from current dir
-    rootMod = 'gitube'
-
-    envMod = '%s.config.env.%s' % (rootMod, os.environ['DJANGO_ENV'])
-    from __import__(envMod) import *
-
+# custom settings
+from config.env.dev import *
 
     
     
