@@ -15,6 +15,8 @@ class Project(models.Model):
     class Meta:
         db_table = TABLE_FORMAT % 'projects'
 
+
+
 class Repository(models.Model):
     name        = models.CharField(max_length=50, unique=True)
     description = models.TextField()
@@ -27,6 +29,17 @@ class Repository(models.Model):
     class Meta:
         db_table = TABLE_FORMAT % 'repositories'
 
+    def canRead(self, user):
+        if user == self.owner or self.is_public:
+            return True
+
+        try:
+            RepositoryUserRoles.objects.get(repo=self, user=user)
+            return True
+        except Model.DoesNotExist:
+            return False
+
+
 class Team(models.Model):
     name        = models.CharField(max_length=50, unique=True)
     description = models.TextField()
@@ -35,6 +48,11 @@ class Team(models.Model):
 
     class Meta:
         db_table = TABLE_FORMAT % 'teams'
+
+class TeamRoles(models.Model):
+    team  = models.ForeignKey(Team)
+    group = models.ForeignKey(Group)
+
         
 class RepositoryUserRoles(models.Model):
     repo  = models.ForeignKey(Repository)
