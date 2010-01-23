@@ -15,8 +15,6 @@ class Project(models.Model):
     class Meta:
         db_table = TABLE_FORMAT % 'projects'
 
-
-
 class Repository(models.Model):
     name        = models.CharField(max_length=50, unique=True)
     description = models.TextField()
@@ -36,7 +34,7 @@ class Repository(models.Model):
         try:
             RepositoryUserRoles.objects.get(repo=self, user=user)
             return True
-        except Model.DoesNotExist:
+        except RepositoryUserRoles.DoesNotExist:
             return False
 
 

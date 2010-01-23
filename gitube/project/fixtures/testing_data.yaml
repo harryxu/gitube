@@ -1,0 +1,28 @@
+### users
+- model: auth.User
+  pk: 1
+  fields:
+    username: harryxu
+
+- model: auth.User
+  pk: 2
+  fields:
+    username: sarah
+
+
+### projects
+- model: project.Project
+  pk: 1
+  fields:
+    name: mars
+    description: 'mars flash'
+    owner: 1
+    slug: mars
+
+### repositories
+- model: project.Repository
+  pk: 1
+  fields:
+    name: flex
+    project: 1
+    owner: 1
