@@ -1,0 +1,28 @@
+[
+{"model":"auth.User", "pk":1, "fields":{"username":"harryxu"}},
+{"model":"auth.User", "pk":2, "fields":{"username":"sarah"}},
+{"model":"auth.User", "pk":3, "fields":{"username":"chloe"}},
+{"model":"auth.User", "pk":4, "fields":{"username":"jack"}},
+
+{"model":"auth.Group", "pk":1, "fields":{"name":"admin"}},
+{"model":"auth.Group", "pk":2, "fields":{"name":"developer"}},
+{"model":"auth.Group", "pk":3, "fields":{"name":"guest"}},
+
+{"model":"project.Project", "pk":1, "fields":{"name":"mars", "owner":1, "slug":"mars"}},
+
+{
+  "model":"project.Repository", 
+  "pk":1, 
+  "fields":{"name":"flex", "project":2, "owner":1}
+},
+
+{"model":"project.Team", "pk":1, "fields":{"name":"flexAdmin", "owner":1}},
+{"model":"project.Team", "pk":2, "fields":{"name":"flexDeveloper", "owner":1}},
+
+{
+  "model":"project.RepositoryUserRoles",
+  "pk":1,
+  "fields":{"repo":1, "user":3, "group":1}
+}
+
+]

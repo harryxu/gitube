@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from gitube.project.models import *
 
 class RepositoryTestCase(TestCase):
-    fixtures = ['testing_data.yaml']
+    fixtures = ['testing_data.json']
 
     def setUp(self):
         self.harryxu = User.objects.get(username='harryxu')
