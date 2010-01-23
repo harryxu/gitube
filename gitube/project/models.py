@@ -30,9 +30,23 @@ class Repository(models.Model):
     def canRead(self, user):
         if user == self.owner or self.is_public:
             return True
-
+        #TODO team user
         try:
             RepositoryUserRoles.objects.get(repo=self, user=user)
+            return True
+        except RepositoryUserRoles.DoesNotExist:
+            return False
+
+    def isAdmin(self, user):
+        if user == self.owner:
+            return True
+        #TODO team user
+        try:
+            RepositoryUserRoles.objects.get(
+                    repo=self, 
+                    user=user, 
+                    group=Group.objects.get(name='admin')
+            )
             return True
         except RepositoryUserRoles.DoesNotExist:
             return False
@@ -51,7 +65,6 @@ class TeamRoles(models.Model):
     team  = models.ForeignKey(Team)
     group = models.ForeignKey(Group)
 
-        
 class RepositoryUserRoles(models.Model):
     repo  = models.ForeignKey(Repository)
     user  = models.ForeignKey(User)

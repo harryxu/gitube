@@ -9,6 +9,26 @@
   fields:
     username: sarah
 
+- model: auth.User
+  pk: 3
+  fields:
+    username: chloe
+
+### groups
+- model: auth.Group
+  pk: 1
+  fields:
+    name: admin
+
+- model: auth.Group
+  pk: 2
+  fields:
+    name: developer
+
+- model: auth.Group
+  pk: 3
+  fields:
+    name: guest
 
 ### projects
 - model: project.Project
@@ -24,5 +44,17 @@
   pk: 1
   fields:
     name: flex
-    project: 1
-    owner: 1
+    project: 1  # mars
+    owner: 1    # harryxu
+
+### repo user roles
+- model: project.RepositoryUserRoles
+  pk: 1
+  fields:
+    repo: 1  # flex
+    user: 3  # chloe
+    group: 1 # admin
+
+
+
+
