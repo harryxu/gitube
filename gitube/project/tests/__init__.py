@@ -25,3 +25,9 @@ class RepositoryTestCase(TestCase):
         self.assertTrue(self.flexRepo.isAdmin(self.chloe))
         self.assertFalse(self.flexRepo.isAdmin(self.sarah))
     
+    def testIsAdmin_repo_team_user(self):
+        pass
+
+    def _addTeamUsers(self):
+        
+        pass

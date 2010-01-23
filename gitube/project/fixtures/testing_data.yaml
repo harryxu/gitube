@@ -47,6 +47,19 @@
     project: 1  # mars
     owner: 1    # harryxu
 
+### teams
+- model: project.Team
+  pk: 1
+  fields:
+    name: flexAdmin
+    owner: 1            # harryxu
+
+- model: project.Team
+  pk: 2
+  fields:
+    name: flexDeveloper
+    owner: 1            # harryxu
+
 ### repo user roles
 - model: project.RepositoryUserRoles
   pk: 1

@@ -51,12 +51,10 @@ class Repository(models.Model):
         except RepositoryUserRoles.DoesNotExist:
             return False
 
-
 class Team(models.Model):
-    name        = models.CharField(max_length=50, unique=True)
-    description = models.TextField()
-    owner       = models.ForeignKey(User, related_name='team_owner')
-    users       = models.ManyToManyField(User)
+    name   = models.CharField(max_length=255, unique=True)
+    owner  = models.ForeignKey(User, related_name='team_owner')
+    users  = models.ManyToManyField(User)
 
     class Meta:
         db_table = TABLE_FORMAT % 'teams'
