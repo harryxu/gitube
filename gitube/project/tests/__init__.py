@@ -16,9 +16,14 @@ class RepositoryTestCase(TestCase):
         self.clark   = users[5]
         
         groups = Group.objects.order_by('id').all()
-        self.flexAdmin     = groups[0]
-        self.flexDeveloper = groups[1]
-        self.guest         = groups[2]
+        self.admin     = groups[0]
+        self.developer = groups[1]
+        self.guest     = groups[2]
+        
+        teams = Team.objects.order_by('id').all()
+        self.flexAdmin     = teams[0]
+        self.flexDeveloper = teams[1]
+        self.flexGuest     = teams[2]
 
         self.flexRepo = Repository.objects.get(name='flex')
 
@@ -35,7 +40,7 @@ class RepositoryTestCase(TestCase):
         # add chloe to flex repo as a developer
         RepositoryUserRoles.objects.create(
                 user = self.chloe,
-                group = self.flexDeveloper,
+                group = self.developer,
                 repo = self.flexRepo)
         
         self.assertTrue(self.flexRepo.canRead(self.harryxu))
@@ -44,7 +49,15 @@ class RepositoryTestCase(TestCase):
         self.assertFalse(self.flexRepo.canRead(self.sarah))
 
     def testCanRead_repo_team_user(self):
-        pass
+        '''Test users in team can view repo'''
+        self.flexAdmin.users.add(self.kim)
+        self.flexDeveloper.users.add(self.clark)
+        self.flexGuest.users.add(self.jack)
+        
+        self.assertTrue(self.flexRepo.canRead(self.kim))
+        self.assertTrue(self.flexRepo.canRead(self.clark))
+        self.assertTrue(self.flexRepo.canRead(self.jack))
+        self.assertFalse(self.flexRepo.canRead(self.chloe))
 
     def testIsAdmin_repo_user(self):
         """Test user can/not edit repo."""

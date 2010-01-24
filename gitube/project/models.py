@@ -48,6 +48,7 @@ class Repository(models.Model):
                     group=Group.objects.get(name='admin')
             )
             return True
+            #Team.objects.filter(owner=user)
         except RepositoryUserRoles.DoesNotExist:
             return False
 
