@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, Permission, Group
+from django.contrib.auth.models import User, Group
 
 from gitube.settings import TABLE_FORMAT
 
@@ -59,14 +59,18 @@ class Team(models.Model):
     class Meta:
         db_table = TABLE_FORMAT % 'teams'
 
-class TeamRoles(models.Model):
+class RepositoryTeamRoles(models.Model):
     team  = models.ForeignKey(Team)
     group = models.ForeignKey(Group)
+    repo  = models.ForeignKey(Repository)
+
+    class Meta:
+        db_table = TABLE_FORMAT % 'repository_team_roles'
 
 class RepositoryUserRoles(models.Model):
-    repo  = models.ForeignKey(Repository)
     user  = models.ForeignKey(User)
     group = models.ForeignKey(Group)
+    repo  = models.ForeignKey(Repository)
 
     class Meta:
         db_table = TABLE_FORMAT % 'repository_user_roles'
