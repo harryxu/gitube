@@ -20,12 +20,12 @@ class RepositoryTestCase(TestCase):
         self.developer = groups[1]
         self.guest     = groups[2]
         
-        teams = Team.objects.order_by('id').all()
+        teams = Team.objects.order_by('id').filter(owner=self.harryxu)
         self.flexAdmin     = teams[0]
         self.flexDeveloper = teams[1]
         self.flexGuest     = teams[2]
 
-        self.flexRepo = Repository.objects.get(name='flex')
+        self.flexRepo = Repository.objects.get(name='flex', owner=self.harryxu)
 
     def test_users_name_are_ok(self):
         self.assertEqual('harryxu', self.harryxu.username)
@@ -57,6 +57,8 @@ class RepositoryTestCase(TestCase):
         self.assertTrue(self.flexRepo.canRead(self.kim))
         self.assertTrue(self.flexRepo.canRead(self.clark))
         self.assertTrue(self.flexRepo.canRead(self.jack))
+        
+        # chloe is out of any flex team
         self.assertFalse(self.flexRepo.canRead(self.chloe))
 
     def testIsAdmin_repo_user(self):

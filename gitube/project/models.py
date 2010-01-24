@@ -30,12 +30,23 @@ class Repository(models.Model):
     def canRead(self, user):
         if user == self.owner or self.is_public:
             return True
-        #TODO team user
+        
         try:
             RepositoryUserRoles.objects.get(repo=self, user=user)
             return True
         except RepositoryUserRoles.DoesNotExist:
-            return False
+            repoTeamSubQuery = '`team_id` IN '\
+                            '(SELECT DISTINCT `team_id` '\
+                             'FROM `%s` '\
+                             'WHERE repo_id=%d)'\
+                            % ('gitube_repository_team_roles', self.id)
+                            # TODO get table name by model meta
+            t = Team.objects.distinct()\
+                            .filter(users=user).extra(where=[repoTeamSubQuery])
+            if len(t) > 0:
+                return True
+            else:
+                return False
 
     def isAdmin(self, user):
         if user == self.owner:
@@ -48,7 +59,6 @@ class Repository(models.Model):
                     group=Group.objects.get(name='admin')
             )
             return True
-            #Team.objects.filter(owner=user)
         except RepositoryUserRoles.DoesNotExist:
             return False
 
