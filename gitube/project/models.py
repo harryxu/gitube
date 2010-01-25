@@ -36,13 +36,14 @@ class Repository(models.Model):
             return True
         except RepositoryUserRoles.DoesNotExist:
             repoTeamSubQuery = '`team_id` IN '\
-                            '(SELECT DISTINCT `team_id` '\
-                             'FROM `%s` '\
-                             'WHERE repo_id=%d)'\
-                            % ('gitube_repository_team_roles', self.id)
-                            # TODO get table name by model meta
+                '(SELECT DISTINCT `team_id` '\
+                'FROM `%s` '\
+                'WHERE repo_id=%d)'\
+                % ('gitube_repository_team_roles', self.id)
+                # TODO get table name by model meta
             t = Team.objects.distinct()\
-                            .filter(users=user).extra(where=[repoTeamSubQuery])
+                            .filter(users=user)\
+                            .extra(where=[repoTeamSubQuery])
             if len(t) > 0:
                 return True
             else:
@@ -51,16 +52,25 @@ class Repository(models.Model):
     def isAdmin(self, user):
         if user == self.owner:
             return True
-        #TODO team user
+
+        adminGroup = Group.objects.get(name='admin')
         try:
-            RepositoryUserRoles.objects.get(
-                    repo=self, 
-                    user=user, 
-                    group=Group.objects.get(name='admin')
-            )
+            RepositoryUserRoles.objects.get(repo=self, user=user, group=adminGroup)
             return True
         except RepositoryUserRoles.DoesNotExist:
-            return False
+            repoTeamSubQuery = '`team_id` IN '\
+                '(SELECT DISTINCT `team_id` '\
+                'FROM `%s` '\
+                'WHERE repo_id=%d and group_id=%d)'\
+                 % ('gitube_repository_team_roles', self.id, adminGroup.id)
+                 # TODO get table name by model meta
+            t = Team.objects.distinct()\
+                            .filter(users=user)\
+                            .extra(where=[repoTeamSubQuery])
+            if len(t) > 0:
+                return True
+            else:
+                return False
 
 class Team(models.Model):
     name   = models.CharField(max_length=255, unique=True)
