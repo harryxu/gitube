@@ -1,15 +1,10 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, include
 
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^gitube/', include('gitube.foo.urls')),
 
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
-    # to INSTALLED_APPS to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
+    (r'^account/', include('django_authopenid.urls')),
     (r'^admin/', include(admin.site.urls)),
 )

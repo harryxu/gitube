@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User, Group
 
-from gitube.settings import TABLE_FORMAT
-
+from django.conf import settings
+tblname = getattr(settings, 'TABLE_NAME_FORMAT', 'gitube_%s')
 
 class Project(models.Model):
     name        = models.CharField(max_length=50, unique=True)
@@ -14,7 +14,7 @@ class Project(models.Model):
     is_public   = models.BooleanField(default=0)
 
     class Meta:
-        db_table = TABLE_FORMAT % 'projects'
+        db_table = tblname % 'projects'
 
     def canRead(self, user):
         if user == self.owner or self.is_public:
@@ -45,7 +45,7 @@ class Repository(models.Model):
     is_public   = models.BooleanField(default=0)
 
     class Meta:
-        db_table = TABLE_FORMAT % 'repositories'
+        db_table = tblname % 'repositories'
 
     def canRead(self, user):
         if user == self.owner or self.is_public:
@@ -72,7 +72,7 @@ class RepositoryUserRoles(models.Model):
     repo  = models.ForeignKey(Repository)
 
     class Meta:
-        db_table = TABLE_FORMAT % 'repository_user_roles'
+        db_table = tblname % 'repository_user_roles'
 
 class ProjectUserRoles(models.Model):
     user     = models.ForeignKey(User)
@@ -80,4 +80,4 @@ class ProjectUserRoles(models.Model):
     project  = models.ForeignKey(Project)
 
     class Meta:
-        db_table = TABLE_FORMAT % 'project_user_roles'
+        db_table = tblname % 'project_user_roles'
