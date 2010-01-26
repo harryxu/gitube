@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User, Group
 
-from gitube.project.models import *
+from gitube.apps.project.models import *
 
 class RepositoryTestCase(TestCase):
     fixtures = ['testing_data.json']

@@ -24,22 +24,7 @@
 </div>
 <br>
 {% endif %}
-<h2>Make a choice:</h2>
-<p> <a href="{% url registration_register %}">Register</a> | <a href="{% url user_signin %}">Log-In</a></p>
 <div class="login">
-
-    <form id="auth_form" name="auth_form" action="{% url user_signin %}" method="post">
-    <input type="hidden" name="next" value="{{ next }}" />
-	<fieldset>
-	    
-	    
-		<legend>{% trans "Sign In Using Your Account ID" %}</legend>
-		<div class="form-row"><label for="id_username">{% trans "Username:" %}</label><br />{{ form2.username }}</div>
-		<div class="form-row"><label for="id_password">{% trans "Password" %}</label><br />{{ form2.password }}</div>
-		
-        <div class="submit-row"><input type="submit" name="blogin" value="{% trans "Sign in" %}"> </div>
-	</fieldset>	
-</form>
 
 <form id="openid_form" name="openid_form" action="{% url user_signin %}" method="post">
     <input type="hidden" name="action" value="verify" />
@@ -61,13 +46,15 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<script type="text/javascript" src="{{ MEDIA_URL }}/js/openid-jquery.js"></script>
+<link rel="stylesheet" href="/static/openid-jquery/css/openid.css" />
+<script type="text/javascript" src="/static/openid-jquery/js/openid-jquery.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
+    openid.img_path = '/static/openid-jquery/images/';
     openid.init('id_openid_url');
 });
 </script>
-<!-- /Simple OpenID Selector -->
     
 {% endblock %}
 

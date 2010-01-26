@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from gitube.settings import TABLE_FORMAT
+from django.conf import settings
+tblname = getattr(settings, 'TABLE_NAME_FORMAT', 'gitube_%s')
 
 class SSHKey(models.Model):
     key     = models.TextField()
@@ -9,4 +10,4 @@ class SSHKey(models.Model):
     user    = models.ForeignKey(User)
 
     class Meta:
-        db_table = TABLE_FORMAT % 'ssh_keys'
+        db_table = tblname % 'ssh_keys'
