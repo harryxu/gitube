@@ -1,11 +1,13 @@
-from django.conf.urls.defaults import patterns, include
 from django.conf import settings
-
+from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
+from gitube.apps.account import views as accountViews
+
 admin.autodiscover()
 
-urlpatterns = patterns('',
 
+urlpatterns = patterns('',
+    url(r'^account/register/$', accountViews.register, name='user_register'),
     (r'^account/', include('django_authopenid.urls')),
     (r'^admin/', include(admin.site.urls)),
 )
