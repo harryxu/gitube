@@ -11,9 +11,29 @@ class Project(models.Model):
     create_at   = models.DateTimeField(auto_now_add=True)
     update_at   = models.DateTimeField(auto_now=True)
     slug        = models.SlugField(max_length=255, unique=True)
+    is_public   = models.BooleanField(default=0)
 
     class Meta:
         db_table = TABLE_FORMAT % 'projects'
+
+    def canRead(self, user):
+        if user == self.owner or self.is_public:
+            return True
+        try:
+            ProjectUserRoles.objects.get(project=self, user=user)
+            return True
+        except ProjectUserRoles.DoesNotExist:
+            return False
+
+    def isAdmin(self, user):
+        if user == self.owner:
+            return True
+        try:
+            ProjectUserRoles.objects.get(
+                project=self, user=user, group=Group.objects.get(name='admin'))
+            return True
+        except ProjectUserRoles.DoesNotExist:
+            return False
 
 class Repository(models.Model):
     name        = models.CharField(max_length=50, unique=True)
@@ -30,24 +50,21 @@ class Repository(models.Model):
     def canRead(self, user):
         if user == self.owner or self.is_public:
             return True
-        
         try:
             RepositoryUserRoles.objects.get(repo=self, user=user)
             return True
         except RepositoryUserRoles.DoesNotExist:
-            return False
+            return self.project.canRead(user)
 
     def isAdmin(self, user):
         if user == self.owner:
             return True
-
-        adminGroup = Group.objects.get(name='admin')
         try:
-            RepositoryUserRoles.objects.get(repo=self, user=user, group=adminGroup)
+            RepositoryUserRoles.objects.get(
+                repo=self, user=user, group=Group.objects.get(name='admin'))
             return True
         except RepositoryUserRoles.DoesNotExist:
-            return False
-
+            return self.project.isAdmin(user)
 
 class RepositoryUserRoles(models.Model):
     user  = models.ForeignKey(User)
@@ -60,7 +77,7 @@ class RepositoryUserRoles(models.Model):
 class ProjectUserRoles(models.Model):
     user     = models.ForeignKey(User)
     group    = models.ForeignKey(Group)
-    project  = models.ForeignKey(Repository)
+    project  = models.ForeignKey(Project)
 
     class Meta:
-        db_table = TABLE_FORMAT % 'repository_user_roles'
+        db_table = TABLE_FORMAT % 'project_user_roles'

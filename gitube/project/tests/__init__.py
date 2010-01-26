@@ -20,21 +20,16 @@ class RepositoryTestCase(TestCase):
         self.developer = groups[1]
         self.guest     = groups[2]
 
-        self.flexRepo = Repository.objects.get(name='flex', owner=self.harryxu)
-        self.cosmosRepo = Repository.objects.get(name='cosmos', owner=self.harryxu)
+        self.marsProj = Project.objects.get(owner=self.harryxu)
 
-    def test_users_name_are_ok(self):
-        self.assertEqual('harryxu', self.harryxu.username)
-        self.assertEqual('sarah', self.sarah.username)
-        self.assertEqual('chloe', self.chloe.username)
-        self.assertEqual('jack', self.jack.username)
-        self.assertEqual('kim', self.kim.username)
-        self.assertEqual('clark', self.clark.username)
+        repos = Repository.objects.order_by('id').filter(owner=self.harryxu)
+        self.flexRepo   = repos[0]
+        self.cosmosRepo = repos[1]
 
     def testCanRead_repo_user(self):
         """Test user can/not view repo."""
         # add chloe to flex repo as a developer
-        RepositoryUserRoles.objects.create(
+        r = RepositoryUserRoles.objects.create(
                 user = self.chloe,
                 group = self.developer,
                 repo = self.flexRepo)
@@ -44,9 +39,42 @@ class RepositoryTestCase(TestCase):
         # Neither sarah is owner nor a user in flex repo.
         self.assertFalse(self.flexRepo.canRead(self.sarah))
 
+        r.delete()
+
     def testIsAdmin_repo_user(self):
         """Test user can/not edit repo."""
+        r1 = RepositoryUserRoles.objects.create(
+                user = self.chloe, group = self.admin, repo = self.flexRepo)
+        r2 = RepositoryUserRoles.objects.create(
+                user = self.sarah, group = self.developer, repo = self.flexRepo)
+
         self.assertTrue(self.flexRepo.isAdmin(self.harryxu))
-        #self.assertTrue(self.flexRepo.isAdmin(self.chloe))
+        self.assertTrue(self.flexRepo.isAdmin(self.chloe))
         self.assertFalse(self.flexRepo.isAdmin(self.sarah))
+        self.assertFalse(self.flexRepo.isAdmin(self.clark))
+
+        r1.delete()
+        r2.delete()
+
+    def testCanRead_project_user(self):
+        """docstring for testCanRead_project_user"""
+        r1 = ProjectUserRoles.objects.create(
+                user=self.kim, group=self.guest, project=self.marsProj)
+        r2 = ProjectUserRoles.objects.create(
+                user=self.jack, group=self.developer, project=self.marsProj)
+
+        self.assertTrue(self.marsProj.canRead(self.kim))
+        self.assertTrue(self.marsProj.canRead(self.jack))
+        self.assertTrue(self.flexRepo.canRead(self.kim))
+        self.assertTrue(self.flexRepo.canRead(self.jack))
+
+        self.assertFalse(self.marsProj.canRead(self.chloe))
+        self.assertFalse(self.flexRepo.canRead(self.chloe))
+
+        r1.delete()
+        r2.delete()
+
+    def testIsAdmin_project_user(self):
+        """docstring for testIsAdmin_project_user"""
+        pass
 
