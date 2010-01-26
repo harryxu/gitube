@@ -19,12 +19,6 @@ class RepositoryTestCase(TestCase):
         self.admin     = groups[0]
         self.developer = groups[1]
         self.guest     = groups[2]
-        
-        teams = Team.objects.order_by('id').filter(owner=self.harryxu)
-        self.flexAdmin     = teams[0]
-        self.flexDeveloper = teams[1]
-        self.flexGuest     = teams[2]
-        self.cosmosTeam    = teams[3]
 
         self.flexRepo = Repository.objects.get(name='flex', owner=self.harryxu)
         self.cosmosRepo = Repository.objects.get(name='cosmos', owner=self.harryxu)
@@ -50,38 +44,9 @@ class RepositoryTestCase(TestCase):
         # Neither sarah is owner nor a user in flex repo.
         self.assertFalse(self.flexRepo.canRead(self.sarah))
 
-    def testCanRead_repo_team_user(self):
-        '''Test users in team can view repo'''
-        self.flexAdmin.users.add(self.kim)
-        self.assertTrue(self.flexRepo.canRead(self.kim))
-
-        self.flexDeveloper.users.add(self.clark)
-        self.assertTrue(self.flexRepo.canRead(self.clark))
-
-        self.flexGuest.users.add(self.jack)
-        self.assertTrue(self.flexRepo.canRead(self.jack))
-        
-        # chloe is out of any flex team
-        self.cosmosTeam.users.add(self.chloe)
-        self.assertFalse(self.flexRepo.canRead(self.chloe))
-
     def testIsAdmin_repo_user(self):
         """Test user can/not edit repo."""
         self.assertTrue(self.flexRepo.isAdmin(self.harryxu))
         #self.assertTrue(self.flexRepo.isAdmin(self.chloe))
         self.assertFalse(self.flexRepo.isAdmin(self.sarah))
-    
-    def testIsAdmin_repo_team_user(self):
-        self.flexAdmin.users.add(self.kim)
-        self.assertTrue(self.flexRepo.isAdmin(self.kim))
-
-        self.flexDeveloper.users.add(self.clark)
-        self.assertFalse(self.flexRepo.isAdmin(self.clark))
-
-        self.flexGuest.users.add(self.jack)
-        self.assertFalse(self.flexRepo.isAdmin(self.jack))
-        
-        # chloe is out of any flex team
-        self.cosmosTeam.users.add(self.chloe)
-        self.assertFalse(self.flexRepo.isAdmin(self.chloe))
 

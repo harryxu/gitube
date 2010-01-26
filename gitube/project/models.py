@@ -35,14 +35,7 @@ class Repository(models.Model):
             RepositoryUserRoles.objects.get(repo=self, user=user)
             return True
         except RepositoryUserRoles.DoesNotExist:
-            repoTeamSubQuery = '`team_id` IN (SELECT DISTINCT `team_id` '\
-                'FROM `%s` WHERE repo_id=%d)'\
-                % (RepositoryTeamRoles._meta.db_table, self.id)
-                
-            t = Team.objects.distinct().filter(users=user)\
-                            .extra(where=[repoTeamSubQuery])
-                            
-            return len(t) > 0
+            return False
 
     def isAdmin(self, user):
         if user == self.owner:
@@ -53,30 +46,8 @@ class Repository(models.Model):
             RepositoryUserRoles.objects.get(repo=self, user=user, group=adminGroup)
             return True
         except RepositoryUserRoles.DoesNotExist:
-            repoTeamSubQuery = '`team_id` IN (SELECT DISTINCT `team_id` '\
-                'FROM `%s` WHERE repo_id=%d and group_id=%d)'\
-                 % (RepositoryTeamRoles._meta.db_table, self.id, adminGroup.id)
-                 
-            t = Team.objects.distinct().filter(users=user)\
-                            .extra(where=[repoTeamSubQuery])
-                            
-            return len(t) > 0
+            return False
 
-class Team(models.Model):
-    name   = models.CharField(max_length=255, unique=True)
-    owner  = models.ForeignKey(User, related_name='team_owner')
-    users  = models.ManyToManyField(User)
-
-    class Meta:
-        db_table = TABLE_FORMAT % 'teams'
-
-class RepositoryTeamRoles(models.Model):
-    team  = models.ForeignKey(Team)
-    group = models.ForeignKey(Group)
-    repo  = models.ForeignKey(Repository)
-
-    class Meta:
-        db_table = TABLE_FORMAT % 'repository_team_roles'
 
 class RepositoryUserRoles(models.Model):
     user  = models.ForeignKey(User)
@@ -86,3 +57,10 @@ class RepositoryUserRoles(models.Model):
     class Meta:
         db_table = TABLE_FORMAT % 'repository_user_roles'
 
+class ProjectUserRoles(models.Model):
+    user     = models.ForeignKey(User)
+    group    = models.ForeignKey(Group)
+    project  = models.ForeignKey(Repository)
+
+    class Meta:
+        db_table = TABLE_FORMAT % 'repository_user_roles'

@@ -18,21 +18,10 @@
   "fields":{"name":"flex", "project":1, "owner":1}
 },
 
-{"model":"project.Team", "pk":1, "fields":{"name":"flexAdmin", "owner":1}},
-{"model":"project.Team", "pk":2, "fields":{"name":"flexDeveloper", "owner":1}},
-{"model":"project.Team", "pk":3, "fields":{"name":"flexGuest", "owner":1}},
-
-{"model":"project.RepositoryTeamRoles", "pk":1, "fields":{"team":1, "group":1, "repo":1}},
-{"model":"project.RepositoryTeamRoles", "pk":2, "fields":{"team":2, "group":2, "repo":1}},
-{"model":"project.RepositoryTeamRoles", "pk":3, "fields":{"team":3, "group":3, "repo":1}},
-
 {
   "model":"project.Repository", 
   "pk":2, 
   "fields":{"name":"cosmos", "project":1, "owner":1}
-},
+}
 
-{"model":"project.Team", "pk":4, "fields":{"name":"cosmosTeam", "owner":1}},
-
-{"model":"project.RepositoryTeamRoles", "pk":4, "fields":{"team":4, "group":1, "repo":2}}
 ]
