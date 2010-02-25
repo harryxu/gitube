@@ -76,5 +76,19 @@ class RepositoryTestCase(TestCase):
 
     def testIsAdmin_project_user(self):
         """docstring for testIsAdmin_project_user"""
-        pass
+        r1 = ProjectUserRoles.objects.create(
+                user=self.kim, group=self.guest, project=self.marsProj)
+        r2 = ProjectUserRoles.objects.create(
+                user=self.jack, group=self.developer, project=self.marsProj)
+        r3 = ProjectUserRoles.objects.create(
+                user=self.chloe, group=self.admin, project=self.marsProj)
+
+        self.assertTrue(self.marsProj.isAdmin(self.harryxu))
+        self.assertTrue(self.marsProj.isAdmin(self.chloe))
+
+        self.assertFalse(self.marsProj.isAdmin(self.kim))
+        self.assertFalse(self.marsProj.isAdmin(self.jack))
+
+        r1.delete()
+        r2.delete()
 
