@@ -16,6 +16,9 @@ class Project(models.Model):
     class Meta:
         db_table = tblname % 'projects'
 
+    def __unicode__(self):
+        return self.name
+
     def canRead(self, user):
         if user == self.owner or self.is_public:
             return True
