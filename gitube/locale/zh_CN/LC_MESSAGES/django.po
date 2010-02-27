@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-02-28 01:09+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/home.html:42
+msgid "Sign In Using Your Account ID"
+msgstr "使用您的账户ID登录"
+
+#: templates/home.html:43
+msgid "Username:"
+msgstr "用户名"
+
+#: templates/home.html:44 templates/authopenid/complete.html:67
+msgid "Password"
+msgstr "密码"
+
+#: templates/home.html:46
+msgid "Sign in"
+msgstr "登录"
+
+#: templates/home.html:54 templates/authopenid/signin.html:33
+msgid "Sign In Using Your OpenID URL"
+msgstr "使用您的OpenID登录"
+
+#: templates/home.html:60 templates/authopenid/associate.html:25
+#: templates/authopenid/signin.html:39
+msgid "OpenId URL :"
+msgstr "OpenId地址"
+
+#: templates/home.html:61 templates/authopenid/signin.html:40
+msgid "Sign in with OpenID"
+msgstr "使用OpenID登录"
+
+#: templates/authopenid/associate.html:19
+msgid "Add a new OpenID URL"
+msgstr "增加一个新的OpenID地址"
+
+#: templates/authopenid/associate.html:26
+msgid "Add OpenID"
+msgstr "增加OpenID"
+
+#: templates/authopenid/complete.html:12
+msgid "Your OpenID is verified! "
+msgstr "您的OpenID已验证"
+
+#: templates/authopenid/complete.html:13
+msgid ""
+"\n"
+"\t<p>Your OpenID can now be associated with a new or existing membership. "
+"You can change the association later in your preferences.</p>\n"
+"\t"
+msgstr ""
+
+#: templates/authopenid/complete.html:17
+msgid "Associate your OpenID"
+msgstr "关联您的OpenID"
+
+#: templates/authopenid/complete.html:18
+msgid ""
+"\n"
+"\t<p>If you're joining <strong>Sitename</strong>, associate your OpenID with "
+"a new account. If you're already a member, associate with your existing "
+"account.</p>\n"
+"\t"
+msgstr ""
+
+#: templates/authopenid/complete.html:26 templates/authopenid/complete.html:36
+#: templates/authopenid/signin.html:10
+msgid "Please correct errors below:"
+msgstr "请修正下面的错误："
+
+#: templates/authopenid/complete.html:50
+msgid "A new account"
+msgstr "一个新的帐号"
+
+#: templates/authopenid/complete.html:51 templates/authopenid/complete.html:66
+#, fuzzy
+msgid "Username"
+msgstr "用户名"
+
+#: templates/authopenid/complete.html:52
+msgid "Email"
+msgstr "邮箱"
+
+#: templates/authopenid/complete.html:53
+msgid "Create account"
+msgstr "创建帐号"
+
+#: templates/authopenid/complete.html:65
+msgid "An existing account"
+msgstr "一个已有的帐号"
+
+#: templates/authopenid/complete.html:68
+msgid "Verify"
+msgstr "验证"
+
+#: templates/authopenid/dissociate.html:21
+msgid "Dissociate OpenID URL"
+msgstr "取消OpenID地址的关联"
+
+#: templates/authopenid/dissociate.html:23
+msgid "Dissociate OpenID"
+msgstr ""
+
+#: templates/authopenid/password_change_form.html:11
+msgid "Set password"
+msgstr "设置密码"
+
+#: templates/authopenid/password_change_form.html:12
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: templates/authopenid/password_change_form.html:16
+#: templates/authopenid/password_change_form.html:32
+msgid "New password:"
+msgstr "新密码："
+
+#: templates/authopenid/password_change_form.html:18
+#: templates/authopenid/password_change_form.html:34
+msgid "Confirm password:"
+msgstr "确认密码："
+
+#: templates/authopenid/password_change_form.html:19
+#: templates/authopenid/password_change_form.html:36
+msgid "Change my password"
+msgstr "修改密码"
+
+#: templates/authopenid/password_change_form.html:24
+msgid "Password change"
+msgstr ""
+
+#: templates/authopenid/password_change_form.html:25
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr "请输入您目前所使用的密码"
+
+#: templates/authopenid/password_change_form.html:30
+msgid "Old password:"
+msgstr "当前密码"
+
+#: templates/authopenid/signin.html:35
+msgid "Please click your account provider:"
+msgstr "请选择您的OpenID账户"
