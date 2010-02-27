@@ -69,6 +69,10 @@ class Repository(models.Model):
         except RepositoryUserRoles.DoesNotExist:
             return self.project.isAdmin(user)
 
+    def __unicode__(self):
+        return self.name
+
+
 class RepositoryUserRoles(models.Model):
     user  = models.ForeignKey(User)
     group = models.ForeignKey(Group)

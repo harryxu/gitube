@@ -12,5 +12,3 @@ def register(request):
         request.user.save()
 
     return result
-
-    

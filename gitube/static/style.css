@@ -1,60 +1,48 @@
-body { 
-    background-color: #fff; 
-    color: #333; 
-}
- 
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
-}
- 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
- 
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
- 
-div.errors,
-li.errors,
-ul.errorlist li {
-    background-color: #ff9898;
-    padding: 0.3em;
-    border-color:#ff0000;
-    padding: 0.3em;
-    border: 1px solid;
+body {
+font-size: 12px;
+font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
 }
 
-ul.errorlist,
-ul.errorlist li {
-    margin: 0;
-    list-style: none;
-    float: right;
-}
-.login {
-    width: 750px;
-    clear: both;
+
+/* ----------container to center the layout-------------- */
+#container {
+width: 960px;
+margin-bottom: 10px;
+margin-left: auto;
+margin-right: auto;
 }
 
-footer#bottom {
-    display: block;
-    width: 100%;
-    clear: both;
-    padding-top: 20px;
+/* ----------header-------------- */
+#header {
+padding: 0px;
+margin: 0px;
+height: 30px;
+background:#EEEEEE;
 }
 
-#bottom p {
-    width: 500px;
+/* -----------------content--------------------- */
+#content {
+padding: 0px;
+width: 600px;
+float: left;
 }
 
-header#top {
-    display: block;
-    width: 100%;
-    height: 40px;
-    margin-bottom: 15px;
-    clear: both;
+pre{
+padding: 5px 10px;
+margin:0px;
+}
+
+/* --------------sidebar------------- */
+#sidebar {
+float: right;
+width: 350px;
+margin: 0px;
+padding: 0px;
+}
+
+/* -----------footer--------------------------- */
+#footer {
+clear: both;
+margin: 0px;
+padding: 0px;
 }
