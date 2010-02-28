@@ -2,5 +2,15 @@
 {% load i18n %}
 
 {% block content %}
-home home
+
+{% if user.is_authenticated %}
+    {% if projects|length < 1 %}
+        You have no project yet.
+    {% else %}
+        list projects.
+    {% endif %}
+{% else %}
+
+{% endif %}
+
 {% endblock %}

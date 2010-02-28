@@ -58,6 +58,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.admin',
+    'django.contrib.sites',
+
     'django_authopenid',
     'gitube.apps.project',
     'gitube.apps.account',
