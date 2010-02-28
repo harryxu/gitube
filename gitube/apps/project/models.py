@@ -39,7 +39,7 @@ class Project(models.Model):
             return False
 
 class Repository(models.Model):
-    name        = models.CharField(max_length=50, unique=True)
+    name        = models.CharField(max_length=50)
     description = models.TextField()
     project     = models.ForeignKey(Project)
     owner       = models.ForeignKey(User)
