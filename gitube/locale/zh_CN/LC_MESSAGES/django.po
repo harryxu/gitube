@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-28 01:09+0800\n"
+"POT-Creation-Date: 2010-02-28 19:08+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,38 +16,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/home.html:42
-msgid "Sign In Using Your Account ID"
-msgstr "使用您的账户ID登录"
+#: templates/base.html:19
+msgid "Sign out"
+msgstr "退出"
 
-#: templates/home.html:43
-msgid "Username:"
-msgstr "用户名"
-
-#: templates/home.html:44 templates/authopenid/complete.html:67
-msgid "Password"
-msgstr "密码"
-
-#: templates/home.html:46
+#: templates/base.html:21
 msgid "Sign in"
 msgstr "登录"
-
-#: templates/home.html:54 templates/authopenid/signin.html:33
-msgid "Sign In Using Your OpenID URL"
-msgstr "使用您的OpenID登录"
-
-#: templates/home.html:60 templates/authopenid/associate.html:25
-#: templates/authopenid/signin.html:39
-msgid "OpenId URL :"
-msgstr "OpenId地址"
-
-#: templates/home.html:61 templates/authopenid/signin.html:40
-msgid "Sign in with OpenID"
-msgstr "使用OpenID登录"
 
 #: templates/authopenid/associate.html:19
 msgid "Add a new OpenID URL"
 msgstr "增加一个新的OpenID地址"
+
+#: templates/authopenid/associate.html:25 templates/authopenid/signin.html:39
+msgid "OpenId URL :"
+msgstr "OpenId地址"
 
 #: templates/authopenid/associate.html:26
 msgid "Add OpenID"
@@ -88,9 +71,8 @@ msgid "A new account"
 msgstr "一个新的帐号"
 
 #: templates/authopenid/complete.html:51 templates/authopenid/complete.html:66
-#, fuzzy
 msgid "Username"
-msgstr "用户名"
+msgstr ""
 
 #: templates/authopenid/complete.html:52
 msgid "Email"
@@ -103,6 +85,10 @@ msgstr "创建帐号"
 #: templates/authopenid/complete.html:65
 msgid "An existing account"
 msgstr "一个已有的帐号"
+
+#: templates/authopenid/complete.html:67
+msgid "Password"
+msgstr "密码"
 
 #: templates/authopenid/complete.html:68
 msgid "Verify"
@@ -155,6 +141,14 @@ msgstr "请输入您目前所使用的密码"
 msgid "Old password:"
 msgstr "当前密码"
 
+#: templates/authopenid/signin.html:33
+msgid "Sign In Using Your OpenID URL"
+msgstr "使用您的OpenID登录"
+
 #: templates/authopenid/signin.html:35
 msgid "Please click your account provider:"
 msgstr "请选择您的OpenID账户"
+
+#: templates/authopenid/signin.html:40
+msgid "Sign in with OpenID"
+msgstr "使用OpenID登录"

@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # register page
     url(r'^account/register/$', 'apps.account.views.register', name='user_register'),
 
-    (r'^account/', include('django_authopenid.urls')),
+    (r'^accounts/', include('django_authopenid.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^p/', include('apps.project.urls')),
 )

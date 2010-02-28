@@ -28,7 +28,7 @@
 
 <form id="openid_form" name="openid_form" action="{% url user_signin %}" method="post">
     <input type="hidden" name="action" value="verify" />
-    <input type="hidden" name="next" value="{{ next }}" />
+    <input type="hidden" name="next" value="{% url home %}" />
 	<fieldset>
 		<legend>{% trans "Sign In Using Your OpenID URL" %}</legend>
 		<div id="openid_choice">
