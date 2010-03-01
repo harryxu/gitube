@@ -53,6 +53,10 @@ th, td{
 padding: 5px;
 }
 
+.errorlist {
+color: #FF0000;
+}
+
 /* --------------sidebar------------- */
 #sidebar {
 float: right;

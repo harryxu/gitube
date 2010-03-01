@@ -3,8 +3,8 @@
 
 {% block content %}
 
-<h1>{% trans "Your Projects:" %}</h1>
 {% if user.is_authenticated %}
+    <h1>{% trans "Your Projects:" %}</h1>
     {% if projects|length < 1 %}
         You have no project yet.
     {% else %}
@@ -15,7 +15,7 @@
     </ul>
     {% endif %}
 {% else %}
-
+    You are not signed in.
 {% endif %}
 
 {% endblock %}
