@@ -38,6 +38,11 @@ class Project(models.Model):
         except ProjectUserRoles.DoesNotExist:
             return False
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('apps.project.views.viewProject', (), {
+                    'pslug': str(self.slug)})
+
 class Repository(models.Model):
     name        = models.CharField(max_length=50)
     description = models.TextField()

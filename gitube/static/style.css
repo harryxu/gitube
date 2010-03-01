@@ -41,9 +41,16 @@ margin:20px 0;
 
 /* -----------------content--------------------- */
 #content {
-padding: 0px;
-width: 600px;
+padding-left: 20px;
+width: 560;
 float: left;
+}
+
+table th{
+vertical-align: top;
+}
+th, td{
+padding: 5px;
 }
 
 /* --------------sidebar------------- */
@@ -64,7 +71,6 @@ border-radius: 6px;
 -moz-border-radius: 6px;
 -webkit-border-radius: 6px;
 }
-
 
 .clear {
 clear: both;
