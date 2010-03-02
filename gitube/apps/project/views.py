@@ -11,18 +11,15 @@ def home(request):
     if request.user.is_authenticated:
         viewData['projects'] = models.Project.objects.filter(owner=request.user)
     return render_to_response('home.html', 
-        RequestContext(request, viewData))
+            RequestContext(request, viewData))
 
 
 #########################  Project #######################
 
 def viewProject(request, pslug):
     """docstring for viewProject"""
-    try:
-        project = models.Project.objects.get(slug=pslug)
-    except models.Project.DoesNotExist:
-        raise Http404
-    return render_to_response('project/view_project',
+    project = get_object_or_404(models.Project, slug=pslug)
+    return render_to_response('project/view_project.html',
             RequestContext(request, {'project':project}))
 
 @login_required
