@@ -19,6 +19,9 @@ def home(request):
 def viewProject(request, pslug):
     """docstring for viewProject"""
     project = get_object_or_404(models.Project, slug=pslug)
+    if not project.canRead(request.user):
+        raise Http404
+        
     return render_to_response('project/view_project.html',
             RequestContext(request, {'project':project}))
 
@@ -36,6 +39,18 @@ def createProject(request):
             return redirect(project)
 
     return render_to_response('project/project_form.html',
+            RequestContext(request, {'form':form}))
+
+@login_required
+def editProject(request, pslug):
+    project = get_object_or_404(models.Project, slug=pslug)
+    if request.method = 'POST':
+        form = forms.ProjectFrom(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect(project)
+
+    return render_to_response('project/project_form.html', 
             RequestContext(request, {'form':form}))
 
 
