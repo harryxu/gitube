@@ -22,7 +22,7 @@ class RepositoryTestCase(TestCase):
 
         self.marsProj = Project.objects.get(owner=self.harryxu)
 
-        repos = Repository.objects.order_by('id').filter(owner=self.harryxu)
+        repos = Repository.objects.order_by('id').filter(project=self.marsProj)
         self.flexRepo   = repos[0]
         self.cosmosRepo = repos[1]
 
