@@ -4,7 +4,9 @@
 {% block content %}
 <h1>{{ project.name }}</h1>
 <div class="project-desc">{{ project.description }}</div>
-
+<ul class="action">
+    <li><a href="{% url edit_project project.slug %}">{% trans "Admin" %}</a></li>
+</ul>
 <div class="repo-list">
 </div>
 {% endblock %}

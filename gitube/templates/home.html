@@ -4,7 +4,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-    <h1>{% trans "Your Projects:" %}</h1>
+    <h1>{% trans "My Projects:" %}</h1>
     {% if projects|length < 1 %}
         You have no project yet.
     {% else %}

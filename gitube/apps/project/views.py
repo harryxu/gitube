@@ -39,19 +39,23 @@ def createProject(request):
             return redirect(project)
 
     return render_to_response('project/project_form.html',
-            RequestContext(request, {'form':form}))
+            RequestContext(request, {'form':form,'action':'Create'}))
 
 @login_required
 def editProject(request, pslug):
     project = get_object_or_404(models.Project, slug=pslug)
-    if request.method = 'POST':
+    if not project.isAdmin(request.user):
+        raise Http404
+    if request.method == 'POST':
         form = forms.ProjectFrom(request.POST, instance=project)
         if form.is_valid():
             form.save()
             return redirect(project)
+    else:
+        form = forms.ProjectFrom(instance=project)
 
-    return render_to_response('project/project_form.html', 
-            RequestContext(request, {'form':form}))
+    return render_to_response('project/project_form.html',
+            RequestContext(request, {'form':form,'action':'Edit'}))
 
 
 #########################  Repository #######################
