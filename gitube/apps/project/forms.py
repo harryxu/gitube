@@ -7,7 +7,7 @@ class ProjectFrom(BaseModelForm):
         model = models.Project
         fields = ('name', 'slug', 'description', 'is_public')
 
-class Repository(BaseModelForm):
+class RepositoryForm(BaseModelForm):
     class Meta:
         model = models.Repository
         fields = ('name', 'slug', 'description')

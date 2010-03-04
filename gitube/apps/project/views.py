@@ -60,7 +60,28 @@ def editProject(request, pslug):
 
 #########################  Repository #######################
 
-def createRepository(request):
+@login_required
+def createRepository(request, pslug):
     """docstring for createRepo"""
-    pass
+    project = get_object_or_404(models.Project, slug=pslug)
+    if not project.isAdmin(request.user):
+        raise Http404
+    if request.method == 'GET':
+        form = forms.RepositoryForm()
+    else:
+        repo = models.Repository()
+        repo.project = project
+        form = forms.RepositoryForm(request.POST, instance=repo)
+        if form.is_valid():
+            form.save()
+            return redirect(repo)
 
+    return render_to_response('project/repository_form.html',
+            RequestContext(request, {'form':form,'action':'Create'}))
+
+@login_required
+def editRepository(request, pslug, rslug):
+    project = get_object_or_404(models.Project, slug=pslug)
+    repo = get_object_or_404(models.Repository, slug=rslug, project=project)
+    #TODO
+    
