@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1>Create repository for {{ project.name }}.</h1>
+<form action="" method="post">
+  <table border="0">
+    {{ form }}
+    <tr><th></th><td><input type="submit" value="{% trans action %}"></td></tr> 
+  </table>
+</form>
+
+{% endblock %}

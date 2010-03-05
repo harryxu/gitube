@@ -40,7 +40,7 @@ class Project(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('apps.project.views.viewProject', (), {
+        return ('view_project', (), {
                     'pslug': str(self.slug)})
 
 class Repository(models.Model):
@@ -76,6 +76,12 @@ class Repository(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('view_repo', (), {
+                    'pslug': str(self.project.slug),
+                    'rslug': str(self.slug)})
 
 
 class RepositoryUserRoles(models.Model):

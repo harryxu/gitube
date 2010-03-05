@@ -11,34 +11,36 @@
 <body>
 
 <div id="container">
-    <div id="header">
-          <h1 class="logo"><a href="{% url home%}">gitube</a></h1>
-          <div class="userbox">
-              {% if user.is_authenticated %}
-                  {{ user.username }} 
-                  <a href="{% url user_signout %}">{% trans "Sign out" %}</a>
-              {% else %}
-              <a href="{% url user_signin %}">{% trans "Sign in" %}</a>
-              {% endif %}
-          </div>
-    </div><!--end header-->
-    <div id="wrapper">
-        <div id="content">
-            {% block content %}{% endblock %}
-        </div><!--end content-->
-        <div id="sidebar">
-            <h2>side bar</h2>
-            {% if user.is_authenticated %}
-            <ul>
-              <li><a href="{% url create_project %}">{% trans "Create a new project" %}</a></li>
-            </ul>
-            {% endif %}
-        </div><!--end sidebar-->
-        <div class="clear"></div>
-    </div><!--end wrapper-->
-    <div id="footer" class="clear">
-        footer
-    </div><!--end footer-->
+  <div id="header">
+      <h1 class="logo"><a href="{% url home %}">gitube</a></h1>
+      <div class="userbox">
+        {% if user.is_authenticated %}
+          {{ user.username }} 
+          <a href="{% url user_signout %}">{% trans "Sign out" %}</a>
+        {% else %}
+        <a href="{% url user_signin %}">{% trans "Sign in" %}</a>
+        {% endif %}
+      </div>
+  </div><!--end header-->
+  <div id="wrapper">
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div><!--end content-->
+    <div id="sidebar">
+      <h2>side bar</h2>
+      {% if user.is_authenticated %}
+      <ul>
+        <li class="create-proj">
+         <a href="{% url create_project %}">{% trans "Create a new project" %}</a>
+        </li>
+      </ul>
+      {% endif %}
+    </div><!--end sidebar-->
+    <div class="clear"></div>
+  </div><!--end wrapper-->
+  <div id="footer" class="clear">
+    footer
+  </div><!--end footer-->
 </div>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>

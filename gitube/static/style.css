@@ -51,8 +51,13 @@ h1.title {
     font: 18px bold;
 }
 
-ul.action li {
+ul.action {
     float: right;
+}
+ul.action li {
+    float: left;
+    text-align: right;
+    padding: 2px 5px;
 }
 
 table th {
