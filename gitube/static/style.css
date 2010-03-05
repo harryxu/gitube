@@ -1,81 +1,91 @@
 body {
-font-size: 14px;
-font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+    font-size: 14px;
+    font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
 }
 
 
 /* ----------container to center the layout-------------- */
 #container {
-width: 960px;
-margin-bottom: 10px;
-margin-left: auto;
-margin-right: auto;
+    width: 960px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ----------header-------------- */
 #header {
-padding: 5px 10px;
-margin: 0px;
-height: 30px;
-background:#EEEEEE;
-border-bottom-left-radius: 6px;
-border-bottom-right-radius: 6px;
--moz-border-radius-bottomleft: 6px;
--moz-border-radius-bottomright: 6px;
--webkit-border-bottom-left-radius: 6px;
--webkit-border-bottom-right-radius: 6px;
+    padding: 5px 10px;
+    margin: 0px;
+    height: 30px;
+    background:#EEEEEE;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    -moz-border-radius-bottomleft: 6px;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
 }
 
 #header .logo {
-float: left;
+    float: left;
 }
 
 .userbox {
-float: right;
+    float: right;
 }
 
 /* -----------------wrapper--------------------- */
 #wrapper{
-margin:20px 0;
+    margin:20px 0;
 }
 
 /* -----------------content--------------------- */
 #content {
-padding-left: 20px;
-width: 560;
-float: left;
+    padding: 10px 20px;
+    width: 560px;
+    float: left;
+    border-right:thin solid #AAAAAA;
 }
 
-table th{
-vertical-align: top;
+h1.title {
+    font: 18px bold;
 }
+
+ul.action li {
+    float: right;
+}
+
+table th {
+    vertical-align: top;
+}
+
 th, td{
-padding: 5px;
+    padding: 5px;
 }
 
 .errorlist {
-color: #FF0000;
+    color: #FF0000;
 }
 
 /* --------------sidebar------------- */
 #sidebar {
-float: right;
-width: 350px;
-margin: 0px;
-padding: 0px;
+    float: right;
+    width: 350px;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* -----------footer--------------------------- */
 #footer {
-margin: 0px;
-padding: 5px;
-text-align: center;
-background-color: #EEEEEE;
-border-radius: 6px;
--moz-border-radius: 6px;
--webkit-border-radius: 6px;
+    margin: 0px;
+    padding: 5px;
+    text-align: center;
+    background-color: #EEEEEE;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
 }
 
 .clear {
-clear: both;
+    clear: both;
 }
