@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1 class="title">{{ project.name }}/<strong>{{ repository.name }}</strong></h1>
+<ul class="action">
+    <li><a href="{% url edit_repo project.slug repository.slug %}">{% trans "Admin" %}</a></li>
+</ul>
+<div class="project-desc clear">{{ repository.description }}</div>
+{% endblock %}

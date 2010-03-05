@@ -63,7 +63,11 @@ def editProject(request, pslug):
 @login_required
 def viewRepository(request, pslug, rslug):
     """docstring for viewRepository"""
-    pass
+    project = get_object_or_404(models.Project, slug=pslug)
+    repo = get_object_or_404(models.Repository, slug=rslug, project=project)
+    return render_to_response('project/view_repository.html',
+            RequestContext(request, {'project':project, 'repository': repo}))
+
 
 @login_required
 def createRepository(request, pslug):
