@@ -4,7 +4,7 @@ urlpatterns = patterns('apps.project.views',
     # project level
     url(r'^create/$', 'createProject', name='create_project'),
     url(r'^(?P<pslug>[^/]+)/$', 'viewProject', name='view_project'),
-    url(r'^(?P<pslug>\S+)/edit/$', 'editProject', name='edit_project'),
+    url(r'^(?P<pslug>[^/]+)/edit/$', 'editProject', name='edit_project'),
 
     # repo level
     url(r'^(?P<pslug>\S+)/newrepo/$', 'createRepository', name='create_repo'),

@@ -90,14 +90,27 @@ def createRepository(request, pslug):
 
     return render_to_response('project/repository_form.html',
             RequestContext(request, {
-                'form':form,
-                'project':project,
-                'action':'Create'}))
+                'form': form,
+                'project': project,
+                'action': 'Create'}))
 
 @login_required
 def editRepository(request, pslug, rslug):
-    #project = get_object_or_404(models.Project, slug=pslug)
-    #repo = get_object_or_404(models.Repository, slug=rslug, project=project)
-    #TODO
-    pass
+    project = get_object_or_404(models.Project, slug=pslug)
+    repo = get_object_or_404(models.Repository, slug=rslug, project=project)
+    if not repo.isAdmin(request.user):
+        raise Http404
+    if request.method == 'POST':
+        form = forms.RepositoryForm(request.POST, instance=repo)
+        if form.is_valid():
+            form.save()
+            return redirect(repo)
+    else:
+        form = forms.RepositoryForm(instance=repo)
+
+    return render_to_response('project/repository_form.html',
+            RequestContext(request, {
+                'form': form,
+                'project': project,
+                'action': 'Edit'}))
     
