@@ -71,7 +71,6 @@ def viewRepository(request, pslug, rslug):
     return render_to_response('project/view_repository.html',
             RequestContext(request, {'project':project, 'repository': repo}))
 
-
 @login_required
 def createRepository(request, pslug):
     """docstring for createRepo"""
