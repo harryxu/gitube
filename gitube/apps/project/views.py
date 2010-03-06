@@ -21,9 +21,12 @@ def viewProject(request, pslug):
     project = get_object_or_404(models.Project, slug=pslug)
     if not project.canRead(request.user):
         raise Http404
+    repos = project.repository_set.all()
         
     return render_to_response('project/view_project.html',
-            RequestContext(request, {'project':project}))
+            RequestContext(request, {
+                'project':project,
+                'repositories':repos}))
 
 @login_required
 def createProject(request):

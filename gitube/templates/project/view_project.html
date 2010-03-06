@@ -8,6 +8,14 @@
     <li><a href="{% url edit_project project.slug %}">{% trans "Admin" %}</a></li>
 </ul>
 <div class="project-desc clear">{{ project.description }}</div>
-<div class="repo-list">
-</div>
+<h2>Repositories</h2>
+<ul class="repo-list">
+    {% if repositories %}
+        {% for repo in repositories %}
+        <li><a href="{{repo.get_absolute_url}}">{{repo.name}}</a></li>
+        {% endfor %}
+    {% else %}
+    {% trans "No repositories yet." %}
+    {% endif%}
+</ul>
 {% endblock %}
