@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<ul class="action">
+  <li><a href="{% url create_public_key %}">{% trans "Add new key" %}</a></li>
+</ul>
+
+{% if keys and keys|length > 0 %}
+{% else %}
+{% endif %}
+
+{% endblock %}

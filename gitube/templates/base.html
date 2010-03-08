@@ -15,7 +15,7 @@
       <h1 class="logo"><a href="{% url home %}">gitube</a></h1>
       <div class="userbox">
         {% if user.is_authenticated %}
-          {{ user.username }} 
+          <a href="{% url account_home %}">{{ user.username }}</a> 
           <a href="{% url user_signout %}">{% trans "Sign out" %}</a>
         {% else %}
         <a href="{% url user_signin %}">{% trans "Sign in" %}</a>

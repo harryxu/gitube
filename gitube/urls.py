@@ -8,8 +8,11 @@ urlpatterns = patterns('',
     # home page
     url(r'^$', 'apps.project.views.home', name='home'),
 
-    url(r'^account/$', '', name='account_home'),
+    # ssh key
     url(r'^account/public_keys/', include('apps.sshkey.urls')),
+    # account
+    url(r'^account/', include('apps.account.urls')),
+
     # register page
     url(r'^account/register/$', 'apps.account.views.register', name='user_register'),
     (r'^account/', include('django_authopenid.urls')),
