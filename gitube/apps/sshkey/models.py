@@ -5,8 +5,8 @@ from django.conf import settings
 tblname = getattr(settings, 'TABLE_NAME_FORMAT', 'gitube_%s')
 
 class SSHKey(models.Model):
-    key   = models.TextField()
     title = models.CharField(max_length=50)
+    key   = models.TextField()
     user  = models.ForeignKey(User)
 
     class Meta:
