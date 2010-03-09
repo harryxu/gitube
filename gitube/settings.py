@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'django_authopenid',
     'gitube.apps.project',
     'gitube.apps.account',
+    'gitube.apps.sshkey',
 )
 
 

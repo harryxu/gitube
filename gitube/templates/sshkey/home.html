@@ -6,8 +6,14 @@
   <li><a href="{% url create_public_key %}">{% trans "Add new key" %}</a></li>
 </ul>
 
+<ul class="public-keys-list clear">
 {% if keys and keys|length > 0 %}
+  {% for key in keys %}
+  <li><a href="{% url edit_public_key key.id%}">{{key.title}}</a></li>
+  {% endfor %}
 {% else %}
+  {% trans "You have no keys yet." %}
 {% endif %}
+</ul>
 
 {% endblock %}
