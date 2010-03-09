@@ -9,7 +9,10 @@
 <ul class="public-keys-list clear">
 {% if keys and keys|length > 0 %}
   {% for key in keys %}
-  <li><a href="{% url edit_public_key key.id%}">{{key.title}}</a></li>
+  <li>{{key.title}}
+    <a href="{% url edit_public_key key.id%}">{% trans "Edit" %}</a>
+    <a href="{% url del_public_key key.id%}">{% trans "Delete" %}</a>
+  </li>
   {% endfor %}
 {% else %}
   {% trans "You have no keys yet." %}

@@ -6,7 +6,13 @@
 <form action="" method="post">
   <table border="0">
     {{ form }}
-    <tr><th></th><td><input type="submit" value="{% trans action %}"></td></tr> 
+    <tr>
+        <th></th>
+        <td>
+            <input type="submit" value="{% trans action %}">
+            <a href="{% url public_keys_home%}">{% trans "Back" %}</a>
+        </td>
+    </tr> 
   </table>
 </form>
 

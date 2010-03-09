@@ -21,6 +21,7 @@ def create(request):
         form = forms.KeyForm(request.POST, instance=key)
         if form.is_valid():
             form.save()
+            return redirect('public_keys_home')
     else:
         form = forms.KeyForm()
     return render_to_response('sshkey/form.html',
@@ -31,4 +32,21 @@ def create(request):
 @login_required
 def edit(request, id):
     """docstring for edit"""
-    pass
+    key = get_object_or_404(models.SSHKey, pk=id, user=request.user)
+    if request.method == 'POST':
+        form = forms.KeyForm(request.POST, instance=key)
+        if form.is_valid():
+            form.save()
+            return redirect('public_keys_home')
+    else:
+        form = forms.KeyForm(instance=key)
+    return render_to_response('sshkey/form.html',
+            RequestContext(request, {
+                'form': form, 
+                'action': 'Edit'}))
+
+def delete(request, id):
+    """docstring for delete(reque"""
+    key = get_object_or_404(models.SSHKey, pk=id, user=request.user)
+    key.delete()
+    return redirect('public_keys_home')
