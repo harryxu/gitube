@@ -45,8 +45,9 @@ def edit(request, id):
                 'form': form, 
                 'action': 'Edit'}))
 
+@login_required
 def delete(request, id):
-    """docstring for delete(reque"""
+    """docstring for delete"""
     key = get_object_or_404(models.SSHKey, pk=id, user=request.user)
     key.delete()
     return redirect('public_keys_home')
