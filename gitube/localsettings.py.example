@@ -35,3 +35,5 @@ LANGUAGE_CODE = 'en-us'
 SECRET_KEY = ''
 
 SITE_ID = 1
+
+SYSTEM_USER = 'git'
