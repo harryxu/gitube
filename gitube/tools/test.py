@@ -1,7 +1,10 @@
+import os
 import unittest
 import ssh
 
-key1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAnNt3hQjf1KApe7qPhg7lE2+HOS8VO/nqteTd83BGY86+2lQhXyVN4bzwN0baRc+A/OZMKbnZ9amIdaoOsusOJGEpcx0hIr4XsVAvO/iOu+byPTtoxSxDP4GBj9N50BN+mMgjsf63jjrynL9Q3gIk+t9MY7lxB0+hVQlQvE0LRMtRw0vp21Fe4nGxN0zg4YlKBVqSYpORrGbh3T/UBHRxYikTEm2mPbVzwBAo+3Tl/129Vlv/6eRFcfrmHPc1wK1+l95H/ct+hCRkyhBjRLWVQ24RTjebvS1ndUBh5e4YoN7S7POPhyvKdCx2I9/hx9CSyF1EW8Hsghpl3Pka8TOovw== harry@harry-laptop"
+key1 = "ssh-rsa AAAA"
+key2 = "ssh-rsa BBBB"
+key3 = "ssh-rsa CCCC"
 
 class TestSSH(unittest.TestCase):
     def tearDown(self):
@@ -14,10 +17,42 @@ class TestSSH(unittest.TestCase):
         self.assertEqual(theKey, ssh.makeAuthorizedKey('harry', key1))
 
     def test_write_key(self):
-        ssh.writeKey('/tmp/asss', 'harry', key1)
+        tmp = self.getTmp()
+        ssh.writeKey(tmp, 'harry', key1)
+        ssh.writeKey(tmp, 'harry', key2)
+        ssh.writeKey(tmp, 'harry', key3)
+
+        f = open(tmp, 'r')
+        self.assertEqual(ssh.makeAuthorizedKey('harry', key1)+'\n', f.readline())
+        self.assertEqual(ssh.makeAuthorizedKey('harry', key2)+'\n', f.readline())
+        self.assertEqual(ssh.makeAuthorizedKey('harry', key3)+'\n', f.readline())
+
+        f.close()
+        os.remove(tmp)
 
     def test_remove_key(self):
-        self.fail('not implement')
+        tmp = self.getTmp()
+        ssh.writeKey(tmp, 'harry', key1)
+        ssh.writeKey(tmp, 'harry', key2)
+        ssh.writeKey(tmp, 'harry', key3)
+        
+        k1 = ssh.makeAuthorizedKey('harry', key1) + '\n'
+        k2 = ssh.makeAuthorizedKey('harry', key2) + '\n'
+        k3 = ssh.makeAuthorizedKey('harry', key3) + '\n'
+
+        f = open(tmp, 'r')
+        self.assertEqual(f.readlines(), [k1, k2, k3])
+        f.close()
+
+        ssh.removeKey(tmp, 'harry', key2)
+        f = open(tmp, 'r')
+        self.assertEqual(f.readlines(), [k1, k3])
+        f.close()
+
+        os.remove(tmp)
+
+    def getTmp(self):
+        return '/tmp/gitube_test_%d.tmp' % os.getpid()
 
 def main():
     unittest.main()

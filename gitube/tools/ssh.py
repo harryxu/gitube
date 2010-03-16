@@ -1,5 +1,7 @@
 #TODO lock file before write or remove key.
 
+import os
+
 def makeAuthorizedKey(user, key):
     template = ('command="gitube-serve %(user)s",no-port-forwarding,'
               +'no-X11-forwarding,no-agent-forwarding,no-pty %(key)s')
@@ -12,4 +14,16 @@ def writeKey(path, user, key):
     fd.close()
 
 def removeKey(path, user, key):
-    pass
+    key = makeAuthorizedKey(user, key) + '\n'
+    tmp = '/tmp/%d.tmp' % os.getpid()
+    infd = open(path, 'r')
+    tmpfd = open(tmp, 'a')
+
+    for line in infd:
+        if line == key:
+            continue
+        tmpfd.write(line)
+
+    infd.close()
+    tmpfd.close()
+    os.rename(tmp, path)
