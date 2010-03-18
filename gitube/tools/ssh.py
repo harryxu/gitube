@@ -26,4 +26,7 @@ def removeKey(path, user, key):
 
     infd.close()
     tmpfd.close()
-    os.rename(tmp, path)
+    try:
+        os.rename(tmp, path)
+    except Exception, e:
+        os.system('mv %s %s' % (tmp, path))
