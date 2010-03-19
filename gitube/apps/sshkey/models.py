@@ -23,15 +23,30 @@ from gitube.tools import ssh
 
 authorized_keys = '/home/%s/.ssh/authorized_keys' % getattr(settings, 'SYSTEM_USER')
 
+keysTobeRemove = []
+
+def preSaveHandler(sender, instance, **kwargs):
+    """docstring for preSaveHandler"""
+    if instance.id is not None and instance.id > 0:
+        oldKey = sender.objects.filter(pk=instance.id).get().key
+        keysTobeRemove.append(oldKey)
+
 def pubkeySaveHandler(sender, instance, **kwargs):
     """docstring for pubkeySaveHandler"""
-    ssh.writeKey(authorized_keys, instance.user.username, instance.key)
+    username = instance.user.username
+    newKey = instance.key
+    ssh.writeKey(authorized_keys, username, newKey)
+
+    for key in keysTobeRemove:
+        ssh.removeKey(authorized_keys, username, key)
+        keysTobeRemove.remove(key)
+
 
 def pubkeyRemoveHandler(sender, instance, **kwargs):
     """docstring for pubkeyRemoveHandler"""
     if instance.id is not None and instance.id > 0:
         ssh.removeKey(authorized_keys, instance.user.username, instance.key)
 
-pre_save.connect(pubkeyRemoveHandler, sender=SSHKey)
+pre_save.connect(preSaveHandler, sender=SSHKey)
 post_save.connect(pubkeySaveHandler, sender=SSHKey)
 post_delete.connect(pubkeyRemoveHandler, sender=SSHKey)
