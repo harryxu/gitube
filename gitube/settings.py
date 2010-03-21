@@ -22,7 +22,6 @@ MEDIA_URL = ''
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
-INTERNAL_IPS = ('127.0.0.1',)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

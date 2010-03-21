@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.db.models.signals import pre_save, post_save, post_delete
 from django.contrib.auth.models import User
@@ -21,14 +22,15 @@ class SSHKey(models.Model):
 
 from gitube.tools import ssh
 
-authorized_keys = '/home/%s/.ssh/authorized_keys' % getattr(settings, 'SYSTEM_USER')
+authorized_keys = '~%s/.ssh/authorized_keys' % getattr(settings, 'SYSTEM_USER')
+authorized_keys = os.path.expanduser(authorized_keys)
 
 keysTobeRemove = []
 
 def preSaveHandler(sender, instance, **kwargs):
     """docstring for preSaveHandler"""
     if instance.id is not None and instance.id > 0:
-        oldKey = sender.objects.filter(pk=instance.id).get().key
+        oldKey = sender.objects.filter(pk=instance.pk).get().key
         keysTobeRemove.append(oldKey)
 
 def pubkeySaveHandler(sender, instance, **kwargs):
