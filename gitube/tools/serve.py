@@ -9,9 +9,13 @@ directory. The client should refer to them without any extra directory
 prefix. Repository names are forced to match ALLOW_RE.
 """
 
-import logging
-
 import sys, os, re
+
+import logging
+import optparse
+
+sys.path.append('/home/harry/workspaces/python/gitube/')
+
 
 #from gitosis import access
 from gitube.tools import access
@@ -168,12 +172,14 @@ def serve(
     return newcmd
 
 class Main(app.App):
+    ## override unuse functions
     def create_parser(self):
-        parser = super(Main, self).create_parser()
-        parser.set_usage('%prog [OPTS] USER')
-        parser.set_description(
-            'Allow restricted git operations under DIR')
+        parser = optparse.OptionParser()
         return parser
+
+    def read_config(self, option, cfg):
+        pass
+    ##
 
     def handle_args(self, parser, cfg, options, args):
         try:
@@ -209,3 +215,10 @@ class Main(app.App):
         os.execvp('git', ['git', 'shell', '-c', newcmd])
         main_log.error('Cannot execute git-shell.')
         sys.exit(1)
+
+def main():
+    """docstring for main"""
+    Main().run()
+
+if __name__ == '__main__':
+    main()
