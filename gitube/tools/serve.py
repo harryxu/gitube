@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """
 This file copied from  gitosis project. 
 Edit by harry for use in gitube.
@@ -14,7 +16,9 @@ import sys, os, re
 import logging
 import optparse
 
-sys.path.append('/home/harry/workspaces/python/gitube/')
+from gitube import settings
+
+sys.path.append(settings.PROJECT_PATH)
 
 
 #from gitosis import access

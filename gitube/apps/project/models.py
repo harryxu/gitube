@@ -1,3 +1,5 @@
+import hashlib
+
 from django.db import models
 from django.contrib.auth.models import User, Group
 
@@ -50,10 +52,17 @@ class Repository(models.Model):
     create_at   = models.DateTimeField(auto_now_add=True)
     update_at   = models.DateTimeField(auto_now=True)
     slug        = models.SlugField(max_length=255, unique=True)
+    path_hash   = models.CharField(max_length=64, unique=True)
     is_public   = models.BooleanField(default=0)
 
     class Meta:
         db_table = tblname % 'repositories'
+
+    def save(self, *args, **kwargs):
+        """docstring for save"""
+        path = '%s/%s.git' % (self.project.slug, self.slug)
+        self.path_hash = hashlib.sha1(path).hexdigest()
+        super(Repository, self).save(*args, **kwargs)
 
     def canRead(self, user):
         if user == self.project.owner or self.is_public:
