@@ -8,7 +8,7 @@ from gitube.apps.project import models, forms
 def home(request):
     """docstring for start"""
     viewData = {}
-    if request.user.is_authenticated:
+    if request.user.is_authenticated():
         viewData['projects'] = models.Project.objects.filter(owner=request.user)
     return render_to_response('home.html', 
             RequestContext(request, viewData))

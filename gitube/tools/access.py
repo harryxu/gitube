@@ -1,26 +1,47 @@
+import os
 import hashlib
+import logging
 
-from gitube.apps.project.models import Project, Repository
+from django.conf import settings
+from gitube import settings as localSettings
+
+settings.configure(DATABASES=localSettings.DATABASES)
+
 from django.contrib.auth.models import User
+from gitube.apps.project.models import Repository
 
-from django.contrib.auth.models import settings
+
+LOG_FILE = '/tmp/gitube/log'
+logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG)
 
 def haveAccess(config, user, mode, path):
     """ Access controll """
-    myuser = User.objects.get(username=user)
-    if not myuser:
+
+    logging.debug('check access for %(user)r as %(mode)r on %(path)r'
+                    % {'user':user, 'mode':mode, 'path':path})
+
+    try:
+        myuser = User.objects.get(username=user)
+    except User.DoesNotExist:
+        logging.debug('User "%(user)r" not found' % {'user':user})
         return None
 
     pathHash = hashlib.sha1(path).hexdigest()
-    repo = Repository.objects.get(path_hash=pathHash)
-
-    if not repo:
+    try:
+        repo = Repository.objects.get(path_hash=pathHash)
+    except Repository.DoesNotExist:
+        logging.debug('Repo %(path)r not found, hashed: %(hashed)r'
+                % {'path':path, 'hashed':pathHash})
         return None
 
-    if mode == 'read' and not repo.canRead(myuser):
+    if mode == 'readonly' and not repo.canRead(myuser):
         return None
-    if mode == 'write' and not repo.isAdmin():
+    if mode == 'writable' and not repo.isAdmin(myuser):
         return None
+
+    basename, ext = os.path.splitext(path)
+    if ext == '.git':
+        path = basename
 
     prefix = getattr(settings, 'REPO_BASE_PATH', 'repositories')
     return (prefix, path)

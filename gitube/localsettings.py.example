@@ -36,4 +36,13 @@ SECRET_KEY = ''
 
 SITE_ID = 1
 
+# ssh login user
 SYSTEM_USER = 'git'
+
+# The repos base path in the $HOME, all repos will put
+# to this path
+REPO_BASE_PATH = 'repos'
+
+# If django are not in the pythonpath, you cant set this
+# to your django path, if this value is empty, we will ignore it.
+DJANGO_PATH = ''
