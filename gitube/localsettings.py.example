@@ -36,8 +36,11 @@ SECRET_KEY = ''
 
 SITE_ID = 1
 
+# the host for git repos
+GIT_HOST = 'localhost'
+
 # ssh login user
-SYSTEM_USER = 'git'
+SSH_USER = 'git'
 
 # The repos base path in the $HOME, all repos will put
 # to this path

@@ -86,6 +86,15 @@ class Repository(models.Model):
     def __unicode__(self):
         return self.name
 
+    def gitAddres(self):
+        """docstring for gitAddres"""
+        addr = '%(user)s@%(host)s:%(project)s/%(repo)s.git' % {
+                        'user': getattr(settings, 'SSH_USER'),
+                        'host': getattr(settings, 'GIT_HOST'),
+                        'project':self.project.slug,
+                        'repo':self.slug}
+        return addr
+
     @models.permalink
     def get_absolute_url(self):
         return ('view_repo', (), {

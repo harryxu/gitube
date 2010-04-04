@@ -16,7 +16,6 @@ logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG)
 
 def haveAccess(config, user, mode, path):
     """ Access controll """
-
     logging.debug('check access for %(user)r as %(mode)r on %(path)r'
                     % {'user':user, 'mode':mode, 'path':path})
 
@@ -36,7 +35,7 @@ def haveAccess(config, user, mode, path):
 
     if mode == 'readonly' and not repo.canRead(myuser):
         return None
-    if mode == 'writable' and not repo.isAdmin(myuser):
+    elif mode == 'writable' and not repo.isAdmin(myuser):
         return None
 
     basename, ext = os.path.splitext(path)

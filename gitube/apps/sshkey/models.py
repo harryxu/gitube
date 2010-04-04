@@ -22,7 +22,7 @@ class SSHKey(models.Model):
 
 from gitube.tools import ssh
 
-authorized_keys = '~%s/.ssh/authorized_keys' % getattr(settings, 'SYSTEM_USER')
+authorized_keys = '~%s/.ssh/authorized_keys' % getattr(settings, 'SSH_USER')
 authorized_keys = os.path.expanduser(authorized_keys)
 
 keysTobeRemove = []

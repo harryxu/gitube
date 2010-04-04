@@ -13,7 +13,10 @@
 <ul class="repo-list">
     {% if repositories %}
         {% for repo in repositories %}
-        <li><a href="{{repo.get_absolute_url}}">{{repo.name}}</a></li>
+        <li>
+            <a href="{{repo.get_absolute_url}}">{{repo.name}}</a>
+            <span class='git-addr'>{{repo.gitAddres}}</span>
+        </li>
         {% endfor %}
     {% else %}
     {% trans "No repositories yet." %}
