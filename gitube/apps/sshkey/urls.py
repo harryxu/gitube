@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
-urlpatterns = patterns('apps.sshkey.views',
+urlpatterns = patterns('gitube.apps.sshkey.views',
     url(r'^$', 'index', name='public_keys_home'),
     url(r'^create/$', 'create', name='create_public_key'),
     url(r'^(?P<id>\d+)/edit/$', 'edit', name='edit_public_key'),

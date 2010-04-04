@@ -6,18 +6,18 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # home page
-    url(r'^$', 'apps.project.views.home', name='home'),
+    url(r'^$', 'gitube.apps.project.views.home', name='home'),
 
     # ssh key
-    url(r'^account/public_keys/', include('apps.sshkey.urls')),
+    url(r'^account/public_keys/', include('gitube.apps.sshkey.urls')),
     # account
-    url(r'^account/', include('apps.account.urls')),
+    url(r'^account/', include('gitube.apps.account.urls')),
 
     # register page
-    url(r'^account/register/$', 'apps.account.views.register', name='user_register'),
+    url(r'^account/register/$', 'gitube.apps.account.views.register', name='user_register'),
     (r'^account/', include('django_authopenid.urls')),
 
-    (r'^p/', include('apps.project.urls')),
+    (r'^p/', include('gitube.apps.project.urls')),
 
     (r'^admin/', include(admin.site.urls)),
 )

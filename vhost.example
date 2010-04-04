@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+    ServerName gitube
+
+    DocumentRoot /home/harry/workspaces/python/gitube/gitube
+    <IfModule mpm_itk_module>
+        AssignUserId git git
+    </IfModule>
+
+    <Directory /home/harry/workspaces/python/gitube/gitube>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        allow from all
+    </Directory>
+
+    WSGIScriptAlias / /home/harry/workspaces/python/gitube/gitube/django.wsgi
+</VirtualHost>
+
