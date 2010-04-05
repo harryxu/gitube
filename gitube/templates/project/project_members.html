@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1 class="title">
+  <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>/{% trans "Members" %}
+</h1>
+<ul class="action">
+</ul>
+<hr/>
+<h2>{% trans "Members" %}</h2>
+<ul class="member-list">
+    {% if purs %}
+        {% for pur in purs %}
+        <li>
+            {{pur.user.username}}
+        </li>
+        {% endfor %}
+    {% else %}
+        {% trans "No members yet." %}
+    {% endif%}
+</ul>
+
+{% endblock %}

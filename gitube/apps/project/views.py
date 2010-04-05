@@ -60,6 +60,17 @@ def editProject(request, pslug):
     return render_to_response('project/project_form.html',
             RequestContext(request, {'form':form,'action':'Edit'}))
 
+#########################  Project members #######################
+@login_required
+def listProjectMembers(request, pslug):
+    project = get_object_or_404(models.Project, slug=pslug)
+    if not project.canRead(request.user):
+        raise Http404
+
+    purs = models.ProjectUserRoles.objects.filter(project=project)
+    return render_to_response('project/project_members.html',
+            RequestContext(request, {'project':project, 'purs':purs}))
+
 
 #########################  Repository #######################
 
