@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1 class="title">
+  <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>/{% trans "Members" %}
+</h1>
+<ul class="action">
+  <a href="{% url add_project_member project.slug %}">{% trans "Add" %}</a>
+</ul>
+<div class="clear"></div>
+<hr/>
+{% block memberContent %}{% endblock %}
+{% endblock %}

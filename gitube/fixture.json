@@ -1,0 +1,5 @@
+[
+{"model":"auth.Group", "pk":1, "fields":{"name":"admin"}},
+{"model":"auth.Group", "pk":2, "fields":{"name":"developer"}},
+{"model":"auth.Group", "pk":3, "fields":{"name":"guest"}}
+]

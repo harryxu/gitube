@@ -68,8 +68,23 @@ def listProjectMembers(request, pslug):
         raise Http404
 
     purs = models.ProjectUserRoles.objects.filter(project=project)
-    return render_to_response('project/project_members.html',
+    return render_to_response('project/members.html',
             RequestContext(request, {'project':project, 'purs':purs}))
+
+@login_required
+def addProjectMember(request, pslug):
+    """docstring for addProjectMember"""
+    project = get_object_or_404(models.Project, slug=pslug)
+    if not project.isAdmin(request.user):
+        raise Http404
+
+    if request.method == 'POST':
+        form = forms.MemberForm(request.POST)
+    else:
+        form = forms.MemberForm()
+
+    return render_to_response('project/member_add_form.html',
+        RequestContext(request, {'form':form, 'project':project}))
 
 
 #########################  Repository #######################

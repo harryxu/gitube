@@ -8,6 +8,7 @@ urlpatterns = patterns('gitube.apps.project.views',
 
     # project members
     url(r'^(?P<pslug>[^/]+)/members/$', 'listProjectMembers', name='list_project_members'),
+    url(r'^(?P<pslug>[^/]+)/members/add/$', 'addProjectMember', name='add_project_member'),
 
     # repo level
     url(r'^(?P<pslug>\S+)/newrepo/$', 'createRepository', name='create_repo'),

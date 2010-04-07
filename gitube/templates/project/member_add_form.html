@@ -1,0 +1,13 @@
+{% extends "project/member_base.html" %}
+{% load i18n %}
+
+{% block memberContent %}
+<h2>{% trans "Add member" %}</h2>
+<form action="" method="post">
+  <table border="0">
+    {{ form}}
+    <tr><th></th><td><input type="submit" value="{% trans "Add" %}"></td></tr> 
+  </table>
+</form>
+{% endblock %}
+
