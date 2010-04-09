@@ -16,12 +16,7 @@ import sys, os, re
 import logging
 import optparse
 
-sys.path.append('/home/harry/workspaces/python/gitube')
 from gitube import settings
-
-if settings.DJANGO_PATH is not None and settings.DJANGO_PATH != '':
-    sys.path.append(settings.DJANGO_PATH)
-
 
 #from gitosis import access
 from gitube.tools import access

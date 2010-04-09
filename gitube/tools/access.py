@@ -32,7 +32,9 @@ def haveAccess(config, user, mode, path):
         logging.debug('Repo %(path)r not found, hashed: %(hashed)r'
                 % {'path':path, 'hashed':pathHash})
         return None
-
+    
+    if mode != 'readonly' and mode != 'writable':
+        return None
     if mode == 'readonly' and not repo.canRead(myuser):
         return None
     elif mode == 'writable' and not repo.canPush(myuser):

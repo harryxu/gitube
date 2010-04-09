@@ -45,7 +45,3 @@ SSH_USER = 'git'
 # The repos base path in the $HOME, all repos will put
 # to this path
 REPO_BASE_PATH = 'repos'
-
-# If django project is not on your PYTHONPATH by default you can set this value.
-# But if this value is empty, we will ignore it.
-DJANGO_PATH = ''
