@@ -25,6 +25,10 @@ def haveAccess(config, user, mode, path):
         logging.debug('User "%(user)r" not found' % {'user':user})
         return None
 
+    basename, ext = os.path.splitext(path)
+    if ext == '.git':
+        path = basename
+
     pathHash = hashlib.sha1(path).hexdigest()
     try:
         repo = Repository.objects.get(path_hash=pathHash)
