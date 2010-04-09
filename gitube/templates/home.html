@@ -14,6 +14,17 @@
   {% else %}
     {% trans "You have no project yet." %}
   {% endif %}
+
+  <h1>{% trans "Projects I have joined." %}</h1>
+  {% if projectRols %}
+    <ul class="project-list">
+        {% for r in projectRoles %}
+        <li><a href="{{ r.project.get_absolute_url }}">{{r.project.name}}</a></li>
+        {% endfor%}
+    </ul>
+  {% else %}
+    {% trans "You have not joined any project yet." %}
+  {% endif %}
 {% else %}
     You are not signed in.
 {% endif %}
