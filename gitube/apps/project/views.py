@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
+from django.contrib.auth.models import User
 
 from gitube.apps.project import models, forms
 
@@ -90,6 +91,14 @@ def addProjectMember(request, pslug):
     return render_to_response('project/member_add_form.html',
         RequestContext(request, {'form':form, 'project':project}))
 
+@login_required
+def removeProjectMember(request, pslug, userId):
+    """docstring for remove"""
+    project = get_object_or_404(models.Project, slug=pslug)
+    user = get_object_or_404(User, pk=userId)
+    purs = get_object_or_404(models.ProjectUserRoles, project=project, user=user)
+    purs.delete()
+    return redirect('list_project_members', pslug=project.slug)
 
 #########################  Repository #######################
 

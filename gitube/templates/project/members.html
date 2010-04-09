@@ -8,6 +8,10 @@
         {% for pur in purs %}
         <li>
             {{pur.user.username}}
+            <span>
+                <a href="{% url del_project_member project.slug pur.user.id %}">
+                    {% trans "Delete" %}</a></span>
+            </span>
         </li>
         {% endfor %}
     {% else %}
