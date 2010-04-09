@@ -5,26 +5,26 @@
 
 {% if user.is_authenticated %}
   <h1>{% trans "My Projects:" %}</h1>
-  {% if projects|length > 0 %}
-    <ul class="project-list">
+  <ul class="project-list">
+      {% if projects %}
         {% for p in projects %}      
-        <li><a href="{{ p.get_absolute_url }}">{{p.name}}</a></li>
+          <li><a href="{{ p.get_absolute_url }}">{{p.name}}</a></li>
         {% endfor%}
-    </ul>
-  {% else %}
-    {% trans "You have no project yet." %}
-  {% endif %}
+      {% else %}
+        {% trans "You have no project yet." %}
+      {% endif %}
+  </ul>
 
   <h1>{% trans "Projects I have joined." %}</h1>
-  {% if projectRols %}
-    <ul class="project-list">
+  <ul class="project-list">
+  {% if projectRoles %}
         {% for r in projectRoles %}
         <li><a href="{{ r.project.get_absolute_url }}">{{r.project.name}}</a></li>
         {% endfor%}
-    </ul>
   {% else %}
     {% trans "You have not joined any project yet." %}
   {% endif %}
+  </ul>
 {% else %}
     You are not signed in.
 {% endif %}
