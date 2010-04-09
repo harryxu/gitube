@@ -73,7 +73,7 @@ class Repository(models.Model):
 
     def save(self, *args, **kwargs):
         """docstring for save"""
-        path = '%s/%s.git' % (self.project.slug, self.slug)
+        path = '%s/%s' % (self.project.slug, self.slug)
         self.path_hash = hashlib.sha1(path).hexdigest()
         super(Repository, self).save(*args, **kwargs)
 
