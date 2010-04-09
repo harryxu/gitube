@@ -15,13 +15,13 @@
 {
   "model":"project.Repository", 
   "pk":1, 
-  "fields":{"name":"flex", "project":1}
+  "fields":{"name":"flex", "project":1, "path_hash":"1"}
 },
 
 {
   "model":"project.Repository", 
   "pk":2, 
-  "fields":{"name":"cosmos", "project":1}
+  "fields":{"name":"cosmos", "project":1, "path_hash":"2"}
 }
 
 ]

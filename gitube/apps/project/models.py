@@ -51,7 +51,7 @@ class Repository(models.Model):
     project     = models.ForeignKey(Project)
     create_at   = models.DateTimeField(auto_now_add=True)
     update_at   = models.DateTimeField(auto_now=True)
-    slug        = models.SlugField(max_length=255, unique=True)
+    slug        = models.SlugField(max_length=255)
     path_hash   = models.CharField(max_length=64, unique=True)
     is_public   = models.BooleanField(default=0)
 
