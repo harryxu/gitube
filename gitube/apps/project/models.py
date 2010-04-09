@@ -1,6 +1,7 @@
 import hashlib
 
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import User, Group
 
 from django.conf import settings
@@ -26,6 +27,18 @@ class Project(models.Model):
             return True
         try:
             ProjectUserRoles.objects.get(project=self, user=user)
+            return True
+        except ProjectUserRoles.DoesNotExist:
+            return False
+
+    def canPush(self, user):
+        """Check if user can push code to project repos."""
+        if user == self.owner or self.is_public:
+            return True
+        try:
+            ProjectUserRoles.objects.get(
+                Q(group=Group.objects.get(name='admin'))|Q(group=Group.objects.get(name='developer')),
+                project=self, user=user)
             return True
         except ProjectUserRoles.DoesNotExist:
             return False
@@ -72,6 +85,12 @@ class Repository(models.Model):
             return True
         except RepositoryUserRoles.DoesNotExist:
             return self.project.canRead(user)
+
+    def canPush(self, user):
+        """docstring for canPush"""
+        if user == self.project.owner or self.is_public:
+            return True
+        return self.project.canPush(user)
 
     def isAdmin(self, user):
         if user == self.project.owner:

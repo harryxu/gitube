@@ -74,6 +74,36 @@ class RepositoryTestCase(TestCase):
         r1.delete()
         r2.delete()
 
+    ######## Test can push #######
+    def testCanPush_nobody(self):
+        self.assertFalse(self.marsProj.canPush(self.clark))
+        self.assertFalse(self.flexRepo.canPush(self.clark))
+
+    def testCanPush_guest(self):
+        guest_kim = ProjectUserRoles.objects.create(
+            user=self.kim, group=self.guest, project=self.marsProj)
+        self.assertFalse(self.marsProj.canPush(self.kim))
+        self.assertFalse(self.flexRepo.canPush(self.kim))
+        guest_kim.delete()
+
+    def testCanPush_owner(self):
+        self.assertTrue(self.marsProj.canPush(self.harryxu))
+        self.assertTrue(self.flexRepo.canPush(self.harryxu)) 
+
+    def testCanPush_developer(self):
+        developer_jack = ProjectUserRoles.objects.create(
+            user=self.jack, group=self.developer, project=self.marsProj)
+        self.assertTrue(self.marsProj.canPush(self.jack))
+        self.assertTrue(self.flexRepo.canPush(self.jack))
+        developer_jack.delete()
+
+    def testCanPush_admin(self):
+        admin_sarah = ProjectUserRoles.objects.create(
+            user=self.sarah, group=self.admin, project=self.marsProj)
+        self.assertTrue(self.marsProj.canPush(self.sarah))
+        self.assertTrue(self.flexRepo.canPush(self.sarah))
+        admin_sarah.delete()
+
     def testIsAdmin_project_user(self):
         """docstring for testIsAdmin_project_user"""
         r1 = ProjectUserRoles.objects.create(

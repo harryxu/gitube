@@ -35,7 +35,7 @@ def haveAccess(config, user, mode, path):
 
     if mode == 'readonly' and not repo.canRead(myuser):
         return None
-    elif mode == 'writable' and not repo.isAdmin(myuser):
+    elif mode == 'writable' and not repo.canPush(myuser):
         return None
 
     basename, ext = os.path.splitext(path)
