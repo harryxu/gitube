@@ -18,6 +18,7 @@ class Project(models.Model):
 
     class Meta:
         db_table = tblname % 'projects'
+        ordering = ["name"]
 
     def __unicode__(self):
         return self.name
@@ -70,6 +71,7 @@ class Repository(models.Model):
 
     class Meta:
         db_table = tblname % 'repositories'
+        ordering = ['name']
 
     def save(self, *args, **kwargs):
         """docstring for save"""
