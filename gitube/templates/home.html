@@ -4,7 +4,8 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-  <h1>{% trans "My Projects:" %}</h1>
+<div class="my-projects">
+  <h2>{% trans "My Projects:" %}</h2>
   <ul class="project-list">
       {% if projects %}
         {% for p in projects %}      
@@ -14,8 +15,10 @@
         {% trans "You have no project yet." %}
       {% endif %}
   </ul>
+</div>
 
-  <h1>{% trans "Projects I have joined." %}</h1>
+<div class="joined-projects">
+  <h2>{% trans "Projects I have joined." %}</h2>
   <ul class="project-list">
   {% if projectRoles %}
         {% for r in projectRoles %}
@@ -25,8 +28,21 @@
     {% trans "You have not joined any project yet." %}
   {% endif %}
   </ul>
+</div>
 {% else %}
     You are not signed in.
 {% endif %}
 
+{% endblock %}
+
+{% block sidebar %}
+    {% if user.is_authenticated %}
+    <ul>
+    <li class="create-proj">
+        <a class="sexybutton sexysimple" href="{% url create_project %}">
+            {% trans "Create a new project" %}
+        </a>
+    </li>
+    </ul>
+    {% endif %}
 {% endblock %}

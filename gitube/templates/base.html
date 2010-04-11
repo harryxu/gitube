@@ -28,16 +28,8 @@
       {% block content %}{% endblock %}
     </div><!--end content-->
     <div id="sidebar">
-      <h2>side bar</h2>
-      {% if user.is_authenticated %}
-      <ul>
-        <li class="create-proj">
-            <a class="sexybutton sexysimple" href="{% url create_project %}">
-                {% trans "Create a new project" %}
-            </a>
-        </li>
-      </ul>
-      {% endif %}
+        {% block sidebar %}
+        {% endblock %}
     </div><!--end sidebar-->
     <div class="clear"></div>
   </div><!--end wrapper-->
