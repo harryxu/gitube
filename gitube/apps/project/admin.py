@@ -3,3 +3,4 @@ from gitube.apps.project import models
 
 admin.site.register(models.Project)
 admin.site.register(models.Repository)
+admin.site.register(models.ProjectUserRoles)

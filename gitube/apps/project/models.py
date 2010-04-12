@@ -138,3 +138,4 @@ class ProjectUserRoles(models.Model):
 
     class Meta:
         db_table = tblname % 'project_user_roles'
+        unique_together = ('user', 'project')

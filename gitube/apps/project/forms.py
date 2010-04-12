@@ -50,7 +50,7 @@ class MemberForm(forms.Form):
 
         try:
             models.ProjectUserRoles.objects.get(user=self.user, project=self.project)
-            froms.ValidationError('User already in this project.')
+            raise forms.ValidationError('User already in this project.')
         except models.ProjectUserRoles.DoesNotExist:
             pass
 
