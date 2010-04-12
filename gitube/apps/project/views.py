@@ -81,12 +81,12 @@ def addProjectMember(request, pslug):
         raise Http404
 
     if request.method == 'POST':
-        form = forms.MemberForm(request.POST)
+        form = forms.ProjectMemberForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('list_project_members', pslug=project.slug)
     else:
-        form = forms.MemberForm(initial={'project_id':project.id})
+        form = forms.ProjectMemberForm(initial={'project':project.id})
 
     return render_to_response('project/member_add_form.html',
         RequestContext(request, {'form':form, 'project':project}))
