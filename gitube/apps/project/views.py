@@ -95,6 +95,8 @@ def addProjectMember(request, pslug):
 def removeProjectMember(request, pslug, userId):
     """docstring for remove"""
     project = get_object_or_404(models.Project, slug=pslug)
+    if not project.isAdmin(request.user):
+        raise Http404
     user = get_object_or_404(User, pk=userId)
     purs = get_object_or_404(models.ProjectUserRoles, project=project, user=user)
     purs.delete()

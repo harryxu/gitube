@@ -22,6 +22,9 @@ MEDIA_URL = ''
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
+LOGIN_URL = '/account/signin/'
+LOGOUT_URL = '/account/signout/'
+
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -45,9 +48,6 @@ MIDDLEWARE_CLASSES = (
     
     # django autopenid middleware
     'django_authopenid.middleware.OpenIDMiddleware',
-
-    # django debug tool bar
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'gitube.urls'
@@ -68,7 +68,7 @@ INSTALLED_APPS = (
     'gitube.apps.account',
     'gitube.apps.sshkey',
 
-    'debug_toolbar',
+    #'debug_toolbar',
 )
 
 

@@ -11,8 +11,8 @@ from django.contrib.auth.models import User
 from gitube.apps.project.models import Repository
 
 
-LOG_FILE = '/tmp/gitube/log'
-logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG)
+#LOG_FILE = '/tmp/gitube/log'
+#logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG)
 
 def haveAccess(config, user, mode, path):
     """ Access controll """
