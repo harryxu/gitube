@@ -6,7 +6,10 @@
 <form action="" method="post">
   <table border="0">
     {{ form}}
-    <tr><th></th><td><input type="submit" value="{% trans "Add" %}"></td></tr> 
+    <tr><th></th><td>
+        <button class="sexybutton"><span><span>{% trans "Add" %}</span></span></button>
+        <a href="{% url list_project_members project.slug %}">{% trans "Back" %}</a>
+    </td></tr>
   </table>
 </form>
 {% endblock %}
