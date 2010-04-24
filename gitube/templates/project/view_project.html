@@ -8,7 +8,7 @@
   <li><a href="{% url list_project_members project.slug %}">{% trans "Members" %}</a></li>
   <li><a href="{% url edit_project project.slug %}">{% trans "Admin" %}</a></li>
 </ul>
-<div class="project-desc clear">{{ project.description }}</div>
+<div class="project-desc clear">{{ project.description|linebreaks }}</div>
 <hr/>
 <h2>{% trans "Repositories" %}</h2>
 <ul class="repo-list">
