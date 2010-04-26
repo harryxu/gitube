@@ -13,5 +13,5 @@
 <ul class="action">
     <li><a href="{% url edit_repo repository.project.slug repository.slug %}">{% trans "Admin" %}</a></li>
 </ul>
-<div class="project-desc clear">{{ repository.description|linebreaks }}</div>
+<div class="project-desc clear">{{ repository.description|urlize|linebreaks }}</div>
 {% endblock %}
