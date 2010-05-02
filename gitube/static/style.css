@@ -1,6 +1,6 @@
 body {
     font-size: 14px;
-    font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+    font-family: Arial, Verdana, SunSans-Regular, Sans-Serif;
 }
 
 
@@ -87,6 +87,10 @@ th, td{
 .my-projects, .joined-projects {
     float:left;
     width:50%;
+}
+
+.git-addr {
+    font-family: monospaced;
 }
 
 /* --------------sidebar------------- */
