@@ -6,7 +6,8 @@ import site
 
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
  
-site.addsitedir(os.path.join(root_dir, '/home/harry/.virtualenvs/dev/lib/python2.6/site-packages'))
+# If use virtualenv, uncomment this line and edit.
+#site.addsitedir(os.path.join(root_dir, '/path/to/virtualenv/lib/python2.x/site-packages'))
  
 sys.path.append(root_dir)
 
