@@ -7,11 +7,16 @@
 
 <div> 
     {% trans "git address:" %}
-    <span class='git-addr'>{{ repository.gitAddres }}</span>
+    <code class='git-addr'>{{ repository.gitAddres }}</code>
 </div>
 
 <ul class="action">
     <li><a href="{% url edit_repo repository.project.slug repository.slug %}">{% trans "Admin" %}</a></li>
 </ul>
 <div class="project-desc clear">{{ repository.description|urlize|linebreaks }}</div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+    <script type="text/javascript" src="/static/js/copier.js"></script>
 {% endblock %}

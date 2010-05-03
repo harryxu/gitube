@@ -1,122 +1,142 @@
 body {
-    font-size: 14px;
-    font-family: Arial, Verdana, SunSans-Regular, Sans-Serif;
+  font-size: 14px;
+  font-family: Arial, Verdana, SunSans-Regular, Sans-Serif;
 }
 
 
 /* ----------container to center the layout-------------- */
 #container {
-    width: 960px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 960px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ----------header-------------- */
 #header {
-    padding: 5px 10px;
-    margin: 0px;
-    height: 30px;
-    background:#EEEEEE;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    -moz-border-radius-bottomleft: 6px;
-    -moz-border-radius-bottomright: 6px;
-    -webkit-border-bottom-left-radius: 6px;
-    -webkit-border-bottom-right-radius: 6px;
+  padding: 5px 10px;
+  margin: 0px;
+  height: 30px;
+  background:#EEEEEE;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
 }
 
 #header .logo {
-    float: left;
+  float: left;
 }
 
 .userbox {
-    float: right;
+  float: right;
 }
 
 /* -----------------wrapper--------------------- */
 #wrapper{
-    margin:20px 0;
+  margin:20px 0;
+}
+
+/* links */
+a {
+  color:#366EB8;
+  text-decoration:none;
+}
+a:hover {
+  text-decoration:underline;
 }
 
 /* -----------------content--------------------- */
 #content {
-    padding: 10px 20px;
-    width: 560px;
-    float: left;
-    border-right:thin solid #AAAAAA;
+  padding: 10px 20px;
+  width: 560px;
+  float: left;
+  border-right:thin solid #AAAAAA;
 }
 
 h1.title {
-    font: 26px bold;
+  font: 26px bold;
 }
 
 h2 {
-    color: #333;
-    display: block;
-    margin: 5px;
-    font-weight: bold;
-    font-size: 18px;
+  color: #333;
+  display: block;
+  margin: 5px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 ul.action {
-    float: right;
+  float: right;
 }
 ul.action li {
-    float: left;
-    text-align: right;
-    padding: 2px 5px;
+  float: left;
+  text-align: right;
+  padding: 2px 5px;
 }
 
 .project-desc {
-    color: #888888;
+  color: #888888;
 }
 
 table th {
-    vertical-align: top;
+  vertical-align: top;
 }
 
 th, td{
-    padding: 5px;
+  padding: 5px;
 }
 
 .errorlist {
-    color: #FF0000;
+  color: #FF0000;
 }
 
 .my-projects, .joined-projects {
-    float:left;
-    width:50%;
+  float:left;
+  width:50%;
 }
 
-.git-addr {
-    font-family: monospaced;
+.repo-list li {
+  border: thin solid #CCCCCC;
+  background-color: #EEEEEE;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.repo-list h3 {
+  font-weight: bold;
+}
+
+pre, code {
+  font-family: Inconsolata, Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace;
 }
 
 /* --------------sidebar------------- */
 #sidebar {
-    float: right;
-    width: 350px;
-    margin: 0px;
-    padding: 0px;
+  float: right;
+  width: 350px;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* -----------footer--------------------------- */
 #footer {
-    margin: 0px;
-    padding: 5px;
-    text-align: center;
-    background-color: #EEEEEE;
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+  margin: 0px;
+  padding: 5px;
+  text-align: center;
+  background-color: #EEEEEE;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
 }
 
 /*--------------list------------------------*/
 ul.repo-list, ul.project-list {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .clear {
-    clear: both;
+  clear: both;
 }

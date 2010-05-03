@@ -15,12 +15,17 @@
     {% if repositories %}
         {% for repo in repositories %}
         <li>
-            <a href="{{repo.get_absolute_url}}">{{repo.name}}</a>
-            <span class='git-addr'>{{repo.gitAddres}}</span>
+            <h3><a href="{{repo.get_absolute_url}}">{{repo.name}}</a></h3>
+            <code class='git-addr'>{{repo.gitAddres}}</code>
         </li>
         {% endfor %}
     {% else %}
     {% trans "No repositories yet." %}
     {% endif%}
 </ul>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+    <script type="text/javascript" src="/static/js/copier.js"></script>
 {% endblock %}

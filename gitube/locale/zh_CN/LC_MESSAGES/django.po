@@ -219,7 +219,7 @@ msgstr "还没有仓库"
 
 #: templates/project/view_repository.html:9
 msgid "git address:"
-msgstr "git地址"
+msgstr "git地址:
 
 #: templates/sshkey/form.html:13
 msgid "Back"
