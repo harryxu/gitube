@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.conf.urls.defaults import patterns
 from django.utils.translation import ugettext as _
 from django.http import HttpResponseRedirect
+from django.core.exceptions import PermissionDenied
+
 from gitube.apps.sshkey import models
 
 class SSHKeyAdmin(admin.ModelAdmin):
@@ -13,6 +15,9 @@ class SSHKeyAdmin(admin.ModelAdmin):
         return my_urls + urls
 
     def rebuildAuthorizedKeys(self, request):
+        if not request.user.has_perm('sshkey.can_rebuild'):
+            raise PermissionDenied
+
         self.message_user(request, _('authorized_keys rebuild successed!'))
         models.rebuildAuthorizedKeys()
         return HttpResponseRedirect('/admin/sshkey/sshkey/')
