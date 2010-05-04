@@ -30,3 +30,17 @@ def removeKey(path, user, key):
         os.rename(tmp, path)
     except Exception, e:
         os.system('mv %s %s' % (tmp, path))
+
+def rebuildAuthorizedKeys(keys, path):
+    keysList = [makeAuthorizedKey(key.user.username, key.key) \
+                for key in keys]
+
+    tmp = '/tmp/%d.tmp' % os.getpid()
+    tmpfd = open(tmp, 'a')
+    tmpfd.write('\n'.join(keysList))
+    tmpfd.close()
+    try:
+        os.rename(tmp, path)
+    except Exception, e:
+        os.system('mv %s %s' % (tmp, path))
+            

@@ -2,8 +2,11 @@ import os
 from django.db import models
 from django.db.models.signals import pre_save, post_save, post_delete
 from django.contrib.auth.models import User
-
 from django.conf import settings
+
+from gitube.tools import ssh
+
+
 tblname = getattr(settings, 'TABLE_NAME_FORMAT', 'gitube_%s')
 
 
@@ -20,7 +23,6 @@ class SSHKey(models.Model):
         return self.title
 
 
-from gitube.tools import ssh
 
 authorized_keys = '~%s/.ssh/authorized_keys' % getattr(settings, 'SSH_USER')
 authorized_keys = os.path.expanduser(authorized_keys)
@@ -43,11 +45,13 @@ def pubkeySaveHandler(sender, instance, **kwargs):
         ssh.removeKey(authorized_keys, username, key)
         keysTobeRemove.remove(key)
 
-
 def pubkeyRemoveHandler(sender, instance, **kwargs):
     """docstring for pubkeyRemoveHandler"""
     if instance.id is not None and instance.id > 0:
         ssh.removeKey(authorized_keys, instance.user.username, instance.key)
+
+def rebuildAuthorizedKeys():
+    ssh.rebuildAuthorizedKeys(SSHKey.objects.all(), authorized_keys)
 
 pre_save.connect(preSaveHandler, sender=SSHKey)
 post_save.connect(pubkeySaveHandler, sender=SSHKey)
