@@ -24,6 +24,7 @@ ADMIN_MEDIA_PREFIX = '/media/'
 
 LOGIN_URL = '/account/signin/'
 LOGOUT_URL = '/account/signout/'
+LOGIN_REDIRECT_URL = '/account/'
 
 
 # List of callables that know how to import templates from various sources.
