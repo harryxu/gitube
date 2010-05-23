@@ -12,6 +12,7 @@ def writeKey(path, user, key):
     fd = open(path, 'a')
     fd.write(makeAuthorizedKey(user, key)+'\n')
     fd.close()
+    os.chmod(path, 0600)
 
 def removeKey(path, user, key):
     key = makeAuthorizedKey(user, key) + '\n'
@@ -31,6 +32,8 @@ def removeKey(path, user, key):
     except Exception, e:
         os.system('mv %s %s' % (tmp, path))
 
+    os.chmod(path, 0600)
+
 def rebuildAuthorizedKeys(keys, path):
     keysList = [makeAuthorizedKey(key.user.username, key.key) \
                 for key in keys]
@@ -43,4 +46,6 @@ def rebuildAuthorizedKeys(keys, path):
         os.rename(tmp, path)
     except Exception, e:
         os.system('mv %s %s' % (tmp, path))
+
+    os.chmod(path, 0600)
             
