@@ -1,6 +1,6 @@
-from django.shortcuts import get_object_or_404, render_to_response, redirect
-from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
+from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template import RequestContext
 
 import django_authopenid
@@ -16,9 +16,14 @@ def index(request):
 @not_authenticated
 def register(request):
     result = django_authopenid.views.register(request, send_email=False)
+    user = request.user
 
-    if (request.POST and request.user is not None and not request.user.is_superuser):
+    # 'email' in request.POST.keys() indicate is creating a new account.
+    if (request.POST and 'email' in request.POST.keys()
+            and user is not None 
+            and not user.is_superuser
+            and not user.is_anonymous()):
         # We need active user by admin.
-        request.user.is_active = False
-        request.user.save()
+        user.is_active = False
+        user.save()
     return result
