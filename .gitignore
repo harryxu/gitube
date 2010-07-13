@@ -1,6 +1,7 @@
 .tmp*
 *.pyc
 *.sql
+*.pot
 
 django.wsgi
 

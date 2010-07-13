@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+sudo su git -c "./manage.py runfcgi method=prefork \
+    socket=/tmp/gitube.sock \
+    pidfile=/tmp/gitube.pid \
+    maxspare=2 \
+    maxchildren=1 \
+    umask=73"
