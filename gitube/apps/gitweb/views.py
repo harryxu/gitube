@@ -27,10 +27,8 @@ def gitweb(request):
     res.fp = StringIO(stdout)
     res.begin()
 
-    headers = res.getheaders()
-    if not headers:
+    if not res.getheaders():
         msg = httplib.HTTPMessage(StringIO(stdout))
-        headers = msg.headers
     else:
         meg = res.msg
 
@@ -40,7 +38,7 @@ def gitweb(request):
         if line == '\r\n': break
 
     response = HttpResponse(res.read(), mimetype=msg.getheader('content-type'))
-    for item in headers:
+    for item in msg.items():
         response[item[0]] = item[1]
     return response
 
