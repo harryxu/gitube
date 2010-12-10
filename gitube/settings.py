@@ -68,6 +68,7 @@ INSTALLED_APPS = (
     'gitube.apps.project',
     'gitube.apps.account',
     'gitube.apps.sshkey',
+    'gitube.apps.gitweb',
 )
 
 

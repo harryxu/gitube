@@ -8,6 +8,9 @@ urlpatterns = patterns('',
     # home page
     url(r'^$', 'gitube.apps.project.views.home', name='home'),
 
+    # gitweb
+    url(r'^gitweb/', include('gitube.apps.gitweb.urls')),
+
     # ssh key
     url(r'^account/public_keys/', include('gitube.apps.sshkey.urls')),
     # account

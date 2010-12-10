@@ -1,3 +1,4 @@
+.zcache
 .tmp*
 *.pyc
 *.sql
@@ -6,3 +7,4 @@
 django.wsgi
 
 localsettings.py
+gitweb.conf
