@@ -6,3 +6,5 @@
 django.wsgi
 
 localsettings.py
+
+gitube/runfcgi
