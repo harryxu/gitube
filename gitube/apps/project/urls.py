@@ -17,4 +17,4 @@ urlpatterns = patterns('gitube.apps.project.views',
     url(r'^(?P<pslug>[^/]+)/r/(?P<rslug>[^/]+)/$', 'viewRepository', name='view_repo'),
     url(r'^(?P<pslug>[^/]+)/r/(?P<rslug>[^/]+)/edit/$', 'editRepository', name='edit_repo'),
 
-);
+)
