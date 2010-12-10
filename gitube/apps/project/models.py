@@ -116,6 +116,10 @@ class Repository(models.Model):
                         'repo':self.slug}
         return addr
 
+    def gitwebPath(self):
+        path = '%s/%s.git' %(self.project.slug, self.slug)
+        return path
+
     @models.permalink
     def get_absolute_url(self):
         return ('view_repo', (), {

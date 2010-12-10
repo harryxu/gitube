@@ -1,9 +1,11 @@
 import os, sys, subprocess, httplib
 from cStringIO import StringIO
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.conf import settings
 
+@login_required
 def gitweb(request):
     cigenv = {
             'REQUEST_METHOD': request.method,

@@ -12,6 +12,7 @@
 
 <ul class="action">
     <li><a href="{% url edit_repo repository.project.slug repository.slug %}">{% trans "Admin" %}</a></li>
+    <li><a href="{% url gitweb %}?p={{repository.gitwebPath}}" target="_blank">gitweb</a></li>
 </ul>
 <div class="project-desc clear">{{ repository.description|urlize|linebreaks }}</div>
 {% endblock %}
