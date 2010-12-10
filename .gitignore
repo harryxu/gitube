@@ -8,3 +8,5 @@ django.wsgi
 
 localsettings.py
 gitweb.conf
+
+gitube/runfcgi
