@@ -17,6 +17,7 @@ $(function(){
         'height'            : '96%',
         'autoScale'         : true,
         'type'              : 'iframe',
-        'hideOnContentClick': false
+        'hideOnContentClick': false,
+        'centerOnScroll'    : true
     });
 });
