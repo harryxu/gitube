@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% block css %}
+<link type="text/css" href="/static/fancybox/jquery.fancybox-1.3.4.css" rel="stylesheet" media="screen" />
+{% endblock %}
 {% block content %}
 <h1 class="title">
     <a href="{{ repository.project.get_absolute_url }}">{{ repository.project.name }}</a> / <strong>{{ repository.name }}</strong></h1>
@@ -12,12 +14,13 @@
 
 <ul class="action">
     <li><a href="{% url edit_repo repository.project.slug repository.slug %}">{% trans "Admin" %}</a></li>
-    <li><a href="{% url gitweb %}?p={{repository.gitwebPath}}" target="_blank">gitweb</a></li>
+    <li><a  class="iframe" href="{% url gitweb %}?p={{repository.gitwebPath}}" target="_blank">gitweb</a></li>
 </ul>
 <div class="project-desc clear">{{ repository.description|urlize|linebreaks }}</div>
 {% endblock %}
 
 {% block js %}
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-    <script type="text/javascript" src="/static/js/copier.js"></script>
+    <script type="text/javascript" src="/static/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="/static/js/gitube.js?a"></script>
 {% endblock %}
