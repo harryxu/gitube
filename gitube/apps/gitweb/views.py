@@ -30,7 +30,7 @@ def gitweb(request):
     if not res.getheaders():
         msg = httplib.HTTPMessage(StringIO(stdout))
     else:
-        meg = res.msg
+        msg = res.msg
 
     #remove headers
     while True:
