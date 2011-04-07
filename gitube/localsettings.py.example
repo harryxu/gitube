@@ -44,4 +44,4 @@ SSH_USER = 'git'
 
 # The repos base path in the $HOME, all repos will put
 # to this path
-REPO_BASE_PATH = 'repos'
+REPO_BASE_PATH = 'repositories'
