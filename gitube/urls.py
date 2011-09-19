@@ -22,7 +22,7 @@ urlpatterns = patterns('',
 
     (r'^p/', include('gitube.apps.project.urls')),
 
-    (r'^user/', include('registration.backends.default.urls')),
+    (r'^user/', include('registration.urls')),
 
     (r'^admin/', include(admin.site.urls)),
 )
