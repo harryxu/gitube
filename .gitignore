@@ -4,7 +4,7 @@
 *.sql
 *.pot
 
-django.wsgi
+fabfile.py
 
 localsettings.py
 gitweb.conf
