@@ -10,3 +10,5 @@ localsettings.py
 gitweb.conf
 
 gitube/runfcgi
+
+/gitube.egg-info/
