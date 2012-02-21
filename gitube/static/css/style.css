@@ -68,13 +68,8 @@ h2 {
   font-size: 18px;
 }
 
-ul.action {
+.action {
   float: right;
-}
-ul.action li {
-  float: left;
-  text-align: right;
-  padding: 2px 5px;
 }
 
 .project-desc {

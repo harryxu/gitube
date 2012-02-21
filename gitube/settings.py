@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.sites',
+    'bootstrapform',
 
     'django_authopenid',
     'gitube.apps.project',

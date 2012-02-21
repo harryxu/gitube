@@ -5,11 +5,11 @@
 {% endblock %}
 {% block content %}
 <h1 class="title">{{ project.name }}</h1>
-<ul class="action">
-  <li><a href="{% url create_repo project.slug %}">{% trans "New repository" %}</a></li>
-  <li><a href="{% url list_project_members project.slug %}">{% trans "Members" %}</a></li>
-  <li><a href="{% url edit_project project.slug %}">{% trans "Admin" %}</a></li>
-</ul>
+<div class="action btn-group">
+  <a class="btn" href="{% url create_repo project.slug %}">{% trans "New repository" %}
+  </a><a class="btn" href="{% url list_project_members project.slug %}">{% trans "Members" %}
+  </a><a class="btn" href="{% url edit_project project.slug %}">{% trans "Admin" %}</a>
+</div>
 <div class="project-desc clear">{{ project.description|urlize|linebreaks }}</div>
 <hr/>
 <h2>{% trans "Repositories" %}</h2>

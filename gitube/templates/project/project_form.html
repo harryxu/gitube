@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load bootstrap %}
 
 {% block content %}
 
-<form action="" method="post">
-  <table border="0">
-    {{ form }}
-    <tr><th></th><td>
-        <button class="sexybutton"><span><span>{% trans action %}</span></span></button>
-    </td></tr> 
-  </table>
+<form class="form-horizontal" method="post">
+  <fieldset>
+    {{ form|bootstrap }}
+    <div class="form-actions">
+      <input type="submit" class="btn btn-primary" value="{% trans action %}" />
+    </div>
+  </fieldset>
 </form>
 
 {% endblock %}

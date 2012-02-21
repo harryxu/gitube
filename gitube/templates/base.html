@@ -4,24 +4,31 @@
 <head>
 <title>gitube</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="/static/reset-min.css">
-<link type="text/css" href="/static/style.css" rel="stylesheet" media="screen" />
-<link type="text/css" href="/static/sexybuttons/sexybuttons.css" rel="stylesheet" media="screen" />
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="/static/css/style.css" rel="stylesheet" />
 {% block css %}{% endblock %}
 </head>
 <body>
 <div id="container">
-  <div id="header">
-      <h1 class="logo"><a href="{% url home %}">gitube</a></h1>
-      <div class="userbox">
-    {% if user.is_authenticated %}
-        <a href="{% url account_home %}">{{ user.username }}</a> 
-        <a href="{% url user_signout %}">{% trans "Sign out" %}</a>
-    {% else %}
-        <a href="{% url user_signin %}">{% trans "Sign in" %}</a>
-    {% endif %}
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container" style="width: auto;">
+        <a class="brand" href="{% url home %}">gitube</a>
+        <div class="nav-collapse">
+          <ul class="nav pull-right">
+          {% if user.is_authenticated %}
+            <li><a href="{% url account_home %}">{{ user.username }}</a></li> 
+            <li class="divider-vertical"></li>
+            <li><a href="{% url user_signout %}">{% trans "Sign out" %}</a></li>
+          {% else %}
+            <li><a href="{% url user_signin %}">{% trans "Sign in" %}</a></li>
+          {% endif %}
+          </ul>
+        </div>
       </div>
-  </div><!--end header-->
+    </div>
+  </div>
   <div id="wrapper">
     <div id="content">
       {% block content %}{% endblock %}
@@ -36,7 +43,7 @@
   </div><!--end footer-->
 </div>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 {% block js %}{% endblock %}
 </body>
 </html>
