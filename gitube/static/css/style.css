@@ -1,42 +1,7 @@
 body {
   font-size: 14px;
   font-family: Arial, Verdana, SunSans-Regular, Sans-Serif;
-}
-
-
-/* ----------container to center the layout-------------- */
-#container {
-  width: 960px;
-  margin-bottom: 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ----------header-------------- */
-#header {
-  padding: 5px 10px;
-  margin: 0px;
-  height: 30px;
-  background:#EEEEEE;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  -moz-border-radius-bottomleft: 6px;
-  -moz-border-radius-bottomright: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-}
-
-#header .logo {
-  float: left;
-}
-
-.userbox {
-  float: right;
-}
-
-/* -----------------wrapper--------------------- */
-#wrapper{
-  margin:20px 0;
+  padding-top: 60px;
 }
 
 /* links */
@@ -108,14 +73,6 @@ pre, code {
   font-family: Inconsolata, Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace;
 }
 
-/* --------------sidebar------------- */
-#sidebar {
-  float: right;
-  width: 350px;
-  margin: 0px;
-  padding: 0px;
-}
-
 /* -----------footer--------------------------- */
 #footer {
   margin: 0px;
@@ -130,8 +87,4 @@ pre, code {
 /*--------------list------------------------*/
 ul.repo-list, ul.project-list {
   margin-left: 10px;
-}
-
-.clear {
-  clear: both;
 }

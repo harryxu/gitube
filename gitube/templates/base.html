@@ -5,45 +5,50 @@
 <title>gitube</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/static/css/bootstrap.css" rel="stylesheet">
-<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="/static/css/style.css" rel="stylesheet" />
+<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
 {% block css %}{% endblock %}
 </head>
 <body>
-<div id="container">
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container" style="width: auto;">
-        <a class="brand" href="{% url home %}">gitube</a>
-        <div class="nav-collapse">
-          <ul class="nav pull-right">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="{% url home %}">gitube</a>
+      <div class="nav-collapse">
+        <ul class="nav pull-right">
           {% if user.is_authenticated %}
-            <li><a href="{% url account_home %}">{{ user.username }}</a></li> 
-            <li class="divider-vertical"></li>
-            <li><a href="{% url user_signout %}">{% trans "Sign out" %}</a></li>
+          <li><a href="{% url account_home %}">{{ user.username }}</a></li> 
+          <li class="divider-vertical"></li>
+          <li><a href="{% url user_signout %}">{% trans "Sign out" %}</a></li>
           {% else %}
-            <li><a href="{% url user_signin %}">{% trans "Sign in" %}</a></li>
+          <li><a href="{% url user_signin %}">{% trans "Sign in" %}</a></li>
           {% endif %}
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
   </div>
-  <div id="wrapper">
-    <div id="content">
+</div>
+<div class="container">
+  <div class="row">
+    <div class="span8">
       {% block content %}{% endblock %}
-    </div><!--end content-->
-    <div id="sidebar">
+    </div>
+    <div class="span4">
         {% block sidebar %}{% endblock %}
-    </div><!--end sidebar-->
-    <div class="clear"></div>
-  </div><!--end wrapper-->
-  <div id="footer" class="clear">
+    </div>
+  </div>
+  <footer class="footer">
     footer
-  </div><!--end footer-->
+  </footer>
 </div>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 {% block js %}{% endblock %}
 </body>
 </html>

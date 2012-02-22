@@ -4,30 +4,32 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<div class="my-projects">
-  <h2>{% trans "My Projects:" %}</h2>
-  <ul class="unstyled project-list">
-      {% if projects %}
-        {% for p in projects %}      
-          <li><a href="{{ p.get_absolute_url }}">{{p.name}}</a></li>
-        {% endfor%}
-      {% else %}
-        {% trans "You have no project yet." %}
-      {% endif %}
-  </ul>
-</div>
+<div class="row">
+  <div class="span4">
+    <h2>{% trans "My Projects:" %}</h2>
+    <ul class="unstyled project-list">
+        {% if projects %}
+          {% for p in projects %}      
+            <li><a href="{{ p.get_absolute_url }}">{{p.name}}</a></li>
+          {% endfor%}
+        {% else %}
+          {% trans "You have no project yet." %}
+        {% endif %}
+    </ul>
+  </div>
 
-<div class="joined-projects">
-  <h2>{% trans "Projects I have joined." %}</h2>
-  <ul class="project-list">
-  {% if projectRoles %}
-        {% for r in projectRoles %}
-        <li><a href="{{ r.project.get_absolute_url }}">{{r.project.name}}</a></li>
-        {% endfor%}
-  {% else %}
-    {% trans "You have not joined any project yet." %}
-  {% endif %}
-  </ul>
+  <div class="span4">
+    <h2>{% trans "Projects I have joined." %}</h2>
+    <ul class="project-list">
+    {% if projectRoles %}
+          {% for r in projectRoles %}
+          <li><a href="{{ r.project.get_absolute_url }}">{{r.project.name}}</a></li>
+          {% endfor%}
+    {% else %}
+      {% trans "You have not joined any project yet." %}
+    {% endif %}
+    </ul>
+  </div>
 </div>
 {% else %}
     You are not signed in.
