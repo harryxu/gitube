@@ -38,9 +38,14 @@
 {% endblock %}
 
 {% block sidebar %}
-    {% if user.is_authenticated %}
+  {% if user.is_authenticated %}
+  <div class="gbox">
+    <div class="box-content">
+      <p>一个项目中可包含多个git仓库。</p>
       <a class="btn btn-primary" href="{% url create_project %}">
-          {% trans "Create a new project" %}
+        {% trans "Create a new project" %}
       </a>
-    {% endif %}
+    </div>
+  </div>
+  {% endif %}
 {% endblock %}

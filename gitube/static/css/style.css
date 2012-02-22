@@ -2,6 +2,7 @@ body {
   font-size: 14px;
   font-family: Arial, Verdana, SunSans-Regular, Sans-Serif;
   padding-top: 60px;
+  background: whiteSmoke;
 }
 
 /* links */
@@ -33,22 +34,14 @@ h1.title {
   color: #888888;
 }
 
-table th {
-  vertical-align: top;
-}
-
-th, td{
-  padding: 5px;
-}
-
 .errorlist {
   color: #FF0000;
 }
 
 .repo-list li {
-  border: thin solid #CCCCCC;
-  background-color: #EEEEEE;
-  padding: 5px;
+  border: 1px solid #CECECE;
+  background: white;
+  padding: 5px 10px 15px 10px;
   margin-bottom: 10px;
 }
 
@@ -58,6 +51,21 @@ th, td{
 
 pre, code {
   font-family: Inconsolata, Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace;
+}
+
+/*gbox*/
+
+.gbox {
+  border: 1px solid #CECECE;
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.gbox .box-content {
+  padding: 15px;
 }
 
 /* -----------footer--------------------------- */
