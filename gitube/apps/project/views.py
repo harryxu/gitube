@@ -25,10 +25,10 @@ def viewProject(request, pslug):
         raise Http404
     repos = project.repository_set.all()
         
-    return render_to_response('project/view_project.html',
-            RequestContext(request, {
-                'project':project,
-                'repositories':repos}))
+    return render_to_response('project/view_project.html', RequestContext(request, {
+        'project':project,
+        'repositories':repos
+    }))
 
 @login_required
 def createProject(request):
@@ -43,8 +43,9 @@ def createProject(request):
             form.save()
             return redirect(project)
 
-    return render_to_response('project/project_form.html',
-            RequestContext(request, {'form':form,'action':'Create'}))
+    return render_to_response('project/project_form.html', RequestContext(request, {
+        'form': form,
+    }))
 
 @login_required
 def editProject(request, pslug):
@@ -59,8 +60,10 @@ def editProject(request, pslug):
     else:
         form = forms.ProjectFrom(instance=project)
 
-    return render_to_response('project/project_form.html',
-            RequestContext(request, {'form':form,'action':'Edit'}))
+    return render_to_response('project/project_form.html', RequestContext(request, {
+        'project': project,
+        'form': form,
+    }))
 
 #########################  Project members #######################
 @login_required
@@ -128,11 +131,10 @@ def createRepository(request, pslug):
             form.save()
             return redirect(repo)
 
-    return render_to_response('project/repository_form.html',
-            RequestContext(request, {
+    return render_to_response('project/repository_form.html', RequestContext(request, {
                 'form': form,
                 'project': project,
-                'action': 'Create'}))
+            }))
 
 @login_required
 def editRepository(request, pslug, rslug):
@@ -148,9 +150,9 @@ def editRepository(request, pslug, rslug):
     else:
         form = forms.RepositoryForm(instance=repo)
 
-    return render_to_response('project/repository_form.html',
-            RequestContext(request, {
+    return render_to_response('project/repository_form.html', RequestContext(request, {
                 'form': form,
                 'project': project,
-                'action': 'Edit'}))
+                'repo' :repo,
+            }))
     

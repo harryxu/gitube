@@ -8,7 +8,12 @@
     <legend>Create repository for {{ project.name }}.</legend>
     {{ form|bootstrap }}
     <div class="form-actions">
-      <input type="submit" class="btn btn-primary" value="{% trans action %}" />
+      <input type="submit" class="btn btn-primary" value="{% trans "Save" %}" />
+      {% if repo.id %}
+        <a class="btn" href="{{ repo.get_absolute_url }}">{% trans "Cancel" %}</a>
+      {% else %}
+        <a class="btn" href="{{ project.get_absolute_url }}">{% trans "Cancel" %}</a>
+      {% endif %}
     </div>
   </fieldset>
 </form>

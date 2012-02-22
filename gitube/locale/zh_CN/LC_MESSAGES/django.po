@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-16 23:18+0800\n"
+"POT-Creation-Date: 2012-02-22 19:05+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,27 +21,36 @@ msgstr ""
 msgid "authorized_keys rebuild successed!"
 msgstr ""
 
-#: templates/base.html:20
+#: templates/base.html:29 templates/account/home.html:6
+msgid "Manage public keys"
+msgstr "管理公钥"
+
+#: templates/base.html:30 templates/account/home.html:7
+#, fuzzy
+msgid "Change password"
+msgstr "修改密码"
+
+#: templates/base.html:34
 msgid "Sign out"
 msgstr "退出"
 
-#: templates/base.html:22
+#: templates/base.html:36
 msgid "Sign in"
 msgstr "登录"
 
-#: templates/home.html:8
+#: templates/home.html:9
 msgid "My Projects:"
 msgstr "我的项目："
 
-#: templates/home.html:15
+#: templates/home.html:16
 msgid "You have no project yet."
 msgstr "您还没有任何项目"
 
-#: templates/home.html:21
+#: templates/home.html:22
 msgid "Projects I have joined."
 msgstr "我参与的项目"
 
-#: templates/home.html:28
+#: templates/home.html:29
 #, fuzzy
 msgid "You have not joined any project yet."
 msgstr "您还没有任何项目："
@@ -48,10 +58,6 @@ msgstr "您还没有任何项目："
 #: templates/home.html:43
 msgid "Create a new project"
 msgstr "创建一个新项目"
-
-#: templates/account/home.html:6
-msgid "Manage public keys"
-msgstr "管理公钥"
 
 #: templates/admin/sshkey/sshkey/change_list.html:9
 #, python-format
@@ -198,14 +204,14 @@ msgstr "添加成员"
 #: templates/project/member_add_form.html:10
 #: templates/project/member_base.html:9
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
-#: templates/project/member_add_form.html:11 templates/sshkey/form.html:13
+#: templates/project/member_add_form.html:11
 msgid "Back"
 msgstr "返回"
 
 #: templates/project/member_base.html:6 templates/project/members.html:5
-#: templates/project/view_project.html:8
+#: templates/project/view_project.html:10
 msgid "Members"
 msgstr "成员"
 
@@ -217,24 +223,36 @@ msgstr "删除"
 msgid "No members yet."
 msgstr "没有成员"
 
-#: templates/project/view_project.html:7
+#: templates/project/project_form.html:11
+#: templates/project/repository_form.html:11
+msgid "Save"
+msgstr "保存"
+
+#: templates/project/project_form.html:13
+#: templates/project/project_form.html:15
+#: templates/project/repository_form.html:13
+#: templates/project/repository_form.html:15 templates/sshkey/form.html:12
+msgid "Cancel"
+msgstr "取消"
+
+#: templates/project/view_project.html:9
 msgid "New repository"
 msgstr "创建新仓库"
 
-#: templates/project/view_project.html:9
-#: templates/project/view_repository.html:14
+#: templates/project/view_project.html:11
+#: templates/project/view_repository.html:18
 msgid "Admin"
 msgstr "管理"
 
-#: templates/project/view_project.html:13
+#: templates/project/view_project.html:15
 msgid "Repositories"
 msgstr "仓库"
 
-#: templates/project/view_project.html:23
+#: templates/project/view_project.html:26
 msgid "No repositories yet."
 msgstr "还没有仓库"
 
-#: templates/project/view_repository.html:9
+#: templates/project/view_repository.html:13
 msgid "git address:"
 msgstr "git地址:"
 
