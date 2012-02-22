@@ -1,19 +1,17 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load bootstrap %}
 
 {% block content %}
 
-<form action="" method="post">
-  <table border="0">
-    {{ form }}
-    <tr>
-        <th></th>
-        <td>
-            <input type="submit" value="{% trans action %}">
-            <a href="{% url public_keys_home%}">{% trans "Back" %}</a>
-        </td>
-    </tr> 
-  </table>
+<form class="form-horizontal" method="post">
+  <fieldset>
+    {{ form|bootstrap }}
+    <div class="form-actions">
+      <input type="submit" class="btn btn-primary" value="{% trans action %}" />
+      <a class="btn" href="{% url public_keys_home%}">{% trans "Cancel" %}</a>
+    </div>
+  </fieldset>
 </form>
 
 {% endblock %}

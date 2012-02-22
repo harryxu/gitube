@@ -25,14 +25,6 @@ h1.title {
   font: 26px bold;
 }
 
-h2 {
-  color: #333;
-  display: block;
-  margin: 5px;
-  font-weight: bold;
-  font-size: 18px;
-}
-
 .action {
   float: right;
 }
@@ -51,11 +43,6 @@ th, td{
 
 .errorlist {
   color: #FF0000;
-}
-
-.my-projects, .joined-projects {
-  float:left;
-  width:50%;
 }
 
 .repo-list li {
@@ -82,9 +69,4 @@ pre, code {
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
-}
-
-/*--------------list------------------------*/
-ul.repo-list, ul.project-list {
-  margin-left: 10px;
 }
