@@ -13,18 +13,18 @@
 <div class="project-desc clear">{{ project.description|urlize|linebreaks }}</div>
 <hr/>
 <h2>{% trans "Repositories" %}</h2>
-<ul class="repo-list">
-    {% if repositories %}
-        {% for repo in repositories %}
-        <li>
-            <h3><a href="{{repo.get_absolute_url}}">{{repo.name}}</a></h3>
-            <code class='git-addr'>{{repo.gitAddres}}</code>
-            <a class="iframe" href="{% url gitweb %}?p={{repo.gitwebPath}}" target="_blank">gitweb</a>
-        </li>
-        {% endfor %}
+<ul class="repo-list unstyled">
+  {% if repositories %}
+    {% for repo in repositories %}
+    <li>
+      <h3><a href="{{repo.get_absolute_url}}">{{repo.name}}</a></h3>
+      <code class='git-addr'>{{repo.gitAddres}}</code>
+      <a class="iframe" href="{% url gitweb %}?p={{repo.gitwebPath}}" target="_blank">gitweb</a>
+    </li>
+    {% endfor %}
     {% else %}
     {% trans "No repositories yet." %}
-    {% endif%}
+  {% endif%}
 </ul>
 {% endblock %}
 

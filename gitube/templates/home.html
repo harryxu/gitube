@@ -20,7 +20,7 @@
 
   <div class="span4">
     <h2>{% trans "Projects I have joined." %}</h2>
-    <ul class="project-list">
+    <ul class="unstyled project-list">
     {% if projectRoles %}
           {% for r in projectRoles %}
           <li><a href="{{ r.project.get_absolute_url }}">{{r.project.name}}</a></li>

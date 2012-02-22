@@ -5,18 +5,21 @@
 {% endblock %}
 {% block content %}
 <h1 class="title">
-    <a href="{{ repository.project.get_absolute_url }}">{{ repository.project.name }}</a> / <strong>{{ repository.name }}</strong></h1>
+  <a href="{{ repository.project.get_absolute_url }}">{{ repository.project.name }}</a> / <strong>{{ repository.name }}</strong>
+</h1>
 
-<div> 
-    {% trans "git address:" %}
-    <code class='git-addr'>{{ repository.gitAddres }}</code>
+<div class="row">
+<div class="span6"> 
+  {% trans "git address:" %}
+  <code class='git-addr'>{{ repository.gitAddres }}</code>
 </div>
 
-<ul class="action">
-    <li><a href="{% url edit_repo repository.project.slug repository.slug %}">{% trans "Admin" %}</a></li>
-    <li><a  class="iframe" href="{% url gitweb %}?p={{repository.gitwebPath}}" target="_blank">gitweb</a></li>
+<ul class="btn-group action">
+  <a class="btn" href="{% url edit_repo repository.project.slug repository.slug %}">{% trans "Admin" %}
+  </a><a class="btn iframe" href="{% url gitweb %}?p={{repository.gitwebPath}}" target="_blank">gitweb</a>
 </ul>
-<div class="project-desc clear">{{ repository.description|urlize|linebreaks }}</div>
+</div>
+<div class="project-desc">{{ repository.description|urlize|linebreaks }}</div>
 {% endblock %}
 
 {% block js %}
