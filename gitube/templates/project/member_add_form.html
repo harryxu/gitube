@@ -1,16 +1,17 @@
 {% extends "project/member_base.html" %}
 {% load i18n %}
+{% load bootstrap %}
 
 {% block memberContent %}
-<h2>{% trans "Add member" %}</h2>
-<form action="" method="post">
-  <table border="0">
-    {{ form}}
-    <tr><th></th><td>
-        <button class="sexybutton"><span><span>{% trans "Add" %}</span></span></button>
-        <a href="{% url list_project_members project.slug %}">{% trans "Back" %}</a>
-    </td></tr>
-  </table>
+<form class="form-horizontal" method="post">
+  <fieldset>
+    <legend>{% trans "Add member" %}</legend>
+    {{ form|bootstrap }}
+    <div class="form-actions">
+      <input type="submit" class="btn btn-primary" value="{% trans "Add" %}" />
+      <a class="btn" href="{% url list_project_members project.slug %}">{% trans "Back" %}</a>
+    </div>
+  </fieldset>
 </form>
 {% endblock %}
 
