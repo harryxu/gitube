@@ -1,3 +1,6 @@
+Gitube is a simple git repository management web application 
+can be deployed on your own server.
+
 = Requirements =
 
 == django-authopenid ==
@@ -9,3 +12,5 @@ http://bitbucket.org/ubernostrum/django-registration/
 == gitosis ==
 http://scie.nti.st/2007/11/14/hosting-git-repositories-the-easy-and-secure-way
 Just need it's python libs.
+
+Sponsored by http://bigecko.com
