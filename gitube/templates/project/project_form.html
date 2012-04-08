@@ -6,6 +6,14 @@
 
 <form class="form-horizontal" method="post">
   <fieldset>
+    <legend>
+      {% if  project.id %}
+        {% blocktrans with name=project.name %}Edit project {{ name }}{% endblocktrans %}
+      {% else %}
+        {% trans "Create new project." %}
+      {% endif %}
+
+    </legend>
     {{ form|bootstrap }}
     <div class="form-actions">
       <input type="submit" class="btn btn-primary" value="{% trans "Save" %}" />

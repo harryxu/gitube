@@ -3,57 +3,60 @@
 
 {% block content %}
 {% if msg %}
-<br />
-	<p class="warning">{{ msg }}</p>
+  <p class="warning">{{ msg }}</p>
 {% endif %}
 {% if form2.errors %}
-<div class="errors"><p>{% trans "Please correct errors below:" %}<br />
-	{% if form2.username.errors %} 
-		<span class="error">{{ form2.username.errors|join:", " }}</span>
-	{% endif %}
-	{% if form2.password.errors %} 
-		<span class="error">{{ form2.password.errors|join:", " }}</span>
-	{% endif %}
-</p></div>
-<br>
+<div class="errors">
+  <p>
+    {% trans "Please correct errors below:" %}<br />
+    {% if form2.username.errors %} 
+      <span class="error">{{ form2.username.errors|join:", " }}</span>
+    {% endif %}
+    {% if form2.password.errors %} 
+      <span class="error">{{ form2.password.errors|join:", " }}</span>
+    {% endif %}
+  </p>
+</div>
 {% endif %}
 
 {% if form1.errors %}
 <div class="errors">
-    <p><span class="error">{{ form1.openid_url.errors|join:", " }}</span></p>
+  <p><span class="error">{{ form1.openid_url.errors|join:", " }}</span></p>
 </div>
 <br>
 {% endif %}
 <div class="login">
 
-<form id="openid_form" name="openid_form" action="{% url user_signin %}" method="post">
+  <form id="openid_form" name="openid_form" action="{% url user_signin %}" method="post">
     <input type="hidden" name="action" value="verify" />
     <input type="hidden" name="next" value="{% url home %}" />
-	<fieldset>
-		<legend>{% trans "Sign In Using Your OpenID URL" %}</legend>
-		<div id="openid_choice">
-            <p>{% trans "Please click your account provider:" %}</p>
-    		<div id="openid_btns"></div>
-    	</div>
-    	    <div id="openid_input_area">
-                <label for="id_openid_url">{% trans "OpenId URL :" %}</label>{{ form1.openid_url }}
-                <input name="openid_submit" type="submit" value="{% trans "Sign in with OpenID" %}">
-            </div>
-		
-	</fieldset>
-</form>	
-</div>	
+    <fieldset>
+      <legend>{% trans "Sign In Using Your OpenID URL" %}</legend>
+      <div id="openid_choice">
+        <p>{% trans "Please click your account provider:" %}</p>
+        <div id="openid_btns"></div>
+      </div>
+      <div id="openid_input_area">
+        <label for="id_openid_url">{% trans "OpenId URL :" %}</label>{{ form1.openid_url }}
+        <input name="openid_submit" type="submit" value="{% trans "Sign in with OpenID" %}">
+      </div>
+
+    </fieldset>
+  </form>
+
+  Or <a href="{% url auth_login %}">login</a> with your username and password on this site.
+
+</div>
 {% endblock %}
 
 {% block js %}
 <link rel="stylesheet" href="/static/openid-jquery/css/openid.css" />
 <script type="text/javascript" src="/static/openid-jquery/js/openid-jquery.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-    openid.img_path = '/static/openid-jquery/images/';
-    openid.init('id_openid_url');
-});
+  $(function() {
+      openid.img_path = '/static/openid-jquery/images/';
+      openid.init('id_openid_url');
+  });
 </script>
-    
 {% endblock %}
 
