@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-22 19:05+0800\n"
+"POT-Creation-Date: 2012-04-08 19:54+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,11 @@ msgstr "我参与的项目"
 msgid "You have not joined any project yet."
 msgstr "您还没有任何项目："
 
-#: templates/home.html:43
+#: templates/home.html:44
+msgid "A project can contain one or more git repos"
+msgstr "一个项目中可包含多个git仓库"
+
+#: templates/home.html:46
 msgid "Create a new project"
 msgstr "创建一个新项目"
 
@@ -72,7 +76,7 @@ msgstr ""
 msgid "Add a new OpenID URL"
 msgstr "增加一个新的OpenID地址"
 
-#: templates/authopenid/associate.html:25 templates/authopenid/signin.html:39
+#: templates/authopenid/associate.html:25 templates/authopenid/signin.html:40
 msgid "OpenId URL :"
 msgstr "OpenId地址"
 
@@ -106,7 +110,7 @@ msgid ""
 msgstr ""
 
 #: templates/authopenid/complete.html:26 templates/authopenid/complete.html:36
-#: templates/authopenid/signin.html:10
+#: templates/authopenid/signin.html:11
 msgid "Please correct errors below:"
 msgstr "请修正下面的错误："
 
@@ -185,28 +189,28 @@ msgstr "请输入您目前所使用的密码"
 msgid "Old password:"
 msgstr "当前密码"
 
-#: templates/authopenid/signin.html:33
+#: templates/authopenid/signin.html:34
 msgid "Sign In Using Your OpenID URL"
 msgstr "使用您的OpenID登录"
 
-#: templates/authopenid/signin.html:35
+#: templates/authopenid/signin.html:36
 msgid "Please click your account provider:"
 msgstr "请选择您的OpenID账户"
 
-#: templates/authopenid/signin.html:40
+#: templates/authopenid/signin.html:41
 msgid "Sign in with OpenID"
 msgstr "使用OpenID登录"
 
-#: templates/project/member_add_form.html:5
+#: templates/project/member_add_form.html:8
 msgid "Add member"
 msgstr "添加成员"
 
-#: templates/project/member_add_form.html:10
+#: templates/project/member_add_form.html:11
 #: templates/project/member_base.html:9
 msgid "Add"
 msgstr "添加"
 
-#: templates/project/member_add_form.html:11
+#: templates/project/member_add_form.html:12
 msgid "Back"
 msgstr "返回"
 
@@ -224,12 +228,22 @@ msgid "No members yet."
 msgstr "没有成员"
 
 #: templates/project/project_form.html:11
+#, python-format
+msgid "Edit project %(name)s"
+msgstr "编辑项目 %(name)s"
+
+#: templates/project/project_form.html:13
+#, fuzzy
+msgid "Create new project."
+msgstr "创建一个新项目"
+
+#: templates/project/project_form.html:19
 #: templates/project/repository_form.html:11
 msgid "Save"
 msgstr "保存"
 
-#: templates/project/project_form.html:13
-#: templates/project/project_form.html:15
+#: templates/project/project_form.html:21
+#: templates/project/project_form.html:23
 #: templates/project/repository_form.html:13
 #: templates/project/repository_form.html:15 templates/sshkey/form.html:12
 msgid "Cancel"
@@ -255,6 +269,14 @@ msgstr "还没有仓库"
 #: templates/project/view_repository.html:13
 msgid "git address:"
 msgstr "git地址:"
+
+#: templates/registration/login.html:13
+msgid "User login"
+msgstr ""
+
+#: templates/registration/login.html:16
+msgid "Login"
+msgstr ""
 
 #: templates/sshkey/home.html:6
 msgid "Add new key"
