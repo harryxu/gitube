@@ -1,4 +1,4 @@
-import os, sys, subprocess, httplib
+import os, subprocess, httplib
 from cStringIO import StringIO
 
 from django.contrib.auth.decorators import login_required
@@ -7,13 +7,13 @@ from django.conf import settings
 
 @login_required
 def gitweb(request):
-    cigenv = {
+    cgienv = {
             'REQUEST_METHOD': request.method,
             'QUERY_STRING': request.META['QUERY_STRING'],
             'GITWEB_SITENAME': 'gitub',
             'GITWEB_CONFIG': getattr(settings, 'PROJECT_PATH') + '/gitweb.conf',
     }
-    os.environ.update(cigenv)
+    os.environ.update(cgienv)
 
     p = subprocess.Popen([getattr(settings, 'PROJECT_PATH') + '/gitweb.cgi'],
             stdin = subprocess.PIPE,
