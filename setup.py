@@ -5,7 +5,7 @@ version = '0.1'
 
 setup(name='gitube',
       version=version,
-      description="Web interface for git repo manager.",
+      description='Gitube is a simple git repository management web application can be deployed on your own server.',
       long_description="""\
 """,
       classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -13,7 +13,7 @@ setup(name='gitube',
       author='harryxu',
       author_email='harryzhxu@gmail.com',
       url='https://github.com/harryxu/gitube',
-      license='bsd',
+      license='BSD',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
