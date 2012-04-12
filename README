@@ -2,6 +2,8 @@ Gitube is a simple git repository management web application
 can be deployed on your own server.
 
 Im start working on moved from gitosis to gitolite.
+If you want help, see https://github.com/harryxu/gitube/tree/feature/gitolite.
+And I really need help, send pull requests, please :)
 
 Install (only in chinse for now)
 https://github.com/harryxu/gitube/wiki/%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E
