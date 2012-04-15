@@ -21,11 +21,9 @@ setup(name='gitube',
           'django>=1.4',
           'django-authopenid',
           'django-registration',
-          'gitosis',
           'django-bootstrap-form',
       ],
       dependency_links = [
-          'http://eagain.net/gitweb/?p=gitosis.git;a=snapshot;h=dedb3dc63f413ed6eeba8082b7e93ad136b16d0d;sf=tgz#egg=gitosis',
           'https://github.com/tzangms/django-bootstrap-form/tarball/master#egg=django-bootstrap-form',
       ],
       entry_points="""
