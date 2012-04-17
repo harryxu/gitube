@@ -29,15 +29,11 @@ class Repo(object):
             if perm == '-':
                 key = user + '-'
 
-            self.permissions[key] = {
-                'perm': perm,
-                'refex': refex,
-                'user': user,
-            }
+            self.permissions[key] = '%s %s = %s' % (perm, refex, user)
 
     def del_permission(self, users):
         pass
 
-    def __repr__(self):
-        pass
-
+    def __str__(self):
+        users = [v for k, v in self.permissions.items()]
+        return 'repo %s\n    %s' % (self.name, '\n    '.join(users))
