@@ -28,10 +28,10 @@ Install gitolite
     echo "PATH=\$PATH:/home/git/bin\nexport PATH" > /home/git/.profile
     export PATH=/home/git/bin:$PATH
 
-**Clone gitolite "g3" branch and install it**::
+**Clone gitolite and install it**::
 
     # get the software
-    git clone -b g3 git://github.com/sitaramc/gitolite
+    git clone git://github.com/sitaramc/gitolite.git
 
     # install it
     gitolite/install -ln
