@@ -17,6 +17,22 @@ class RepoTest(unittest.TestCase):
         self.assertRegexpMatches(repo_str, 'RW\s+=\sharryxu');
         self.assertRegexpMatches(repo_str, '-\smaster\s+=\sharry');
 
+    def test_del_permission(self):
+        repo = gitolite.Repo('gitube')
+        repo.add_permission('RW', '', 'harry')
+        repo.add_permission('-', 'master', 'harry')
+        repo_str = str(repo)
+
+        self.assertRegexpMatches(repo_str, 'RW\s+=\sharry');
+        self.assertRegexpMatches(repo_str, '-\smaster\s+=\sharry');
+
+        repo.del_permission('harry')
+        repo_str = str(repo)
+
+        self.assertNotRegexpMatches(repo_str, 'RW\s+=\sharry')
+        self.assertNotRegexpMatches(repo_str, '-\smaster\s+=\sharry');
+
+
 
 
 if __name__ == '__main__':

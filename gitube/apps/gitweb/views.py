@@ -1,4 +1,4 @@
-import os, sys, subprocess, httplib
+import os, subprocess, httplib
 from cStringIO import StringIO
 
 from django.contrib.auth.decorators import login_required

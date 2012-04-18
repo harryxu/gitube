@@ -31,8 +31,12 @@ class Repo(object):
 
             self.permissions[key] = '%s %s = %s' % (perm, refex, user)
 
-    def del_permission(self, users):
-        pass
+    def del_permission(self, *users):
+        for user in users:
+            if user in self.permissions:
+                del self.permissions[user]
+            if user + '-' in self.permissions:
+                del self.permissions[user + '-']
 
     def __str__(self):
         users = [v for k, v in self.permissions.items()]
