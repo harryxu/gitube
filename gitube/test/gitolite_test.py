@@ -4,6 +4,27 @@
 import unittest
 from gitube.lib import gitolite
 
+class GroupTest(unittest.TestCase):
+
+    def test_add_user(self):
+        group = gitolite.Group('developer')
+        group.add_user('harry')
+        group.add_user('harryxu')
+
+        self.assertEqual(str(group), 'developer = harry harryxu')
+
+    def test_del_user(self):
+        group = gitolite.Group('developer')
+        group.add_user('harry')
+        group.add_user('flash')
+
+        self.assertEqual(str(group), 'developer = harry flash')
+
+        group.del_user('harry')
+
+        self.assertEqual(str(group), 'developer = flash')
+        
+
 class RepoTest(unittest.TestCase):
 
     def test_add_permision(self):

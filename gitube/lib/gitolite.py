@@ -13,7 +13,18 @@ class Conf(object):
 
 class Group(object):
     def __init__(self, name):
-        self._name = name
+        self.name = name
+        self.users = []
+
+    def add_user(self, user):
+        if not user in self.users:
+            self.users.append(user)
+
+    def del_user(self, user):
+        self.users.remove(user)
+
+    def __str__(self):
+        return '%s = %s' % (self.name, ' '.join(self.users))
         
 
 class Repo(object):
