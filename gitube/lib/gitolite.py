@@ -41,6 +41,9 @@ class Conf(object):
             return None
         return self.repos[repo_name]
 
+    def parse_conf(self):
+        pass
+
     def __str__(self):
         groups = [str(group) for group in self.groups.values()]
         repos = [str(repo) for repo in self.repos.values()]
@@ -61,7 +64,7 @@ class Group(object):
         self.users.remove(user)
 
     def __str__(self):
-        return '%s = %s' % (self.name, ' '.join(self.users))
+        return '@%s = %s' % (self.name, ' '.join(self.users))
         
 
 class Repo(object):

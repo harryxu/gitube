@@ -44,18 +44,18 @@ class GroupTest(unittest.TestCase):
         group.add_user('harry')
         group.add_user('harryxu')
 
-        self.assertEqual(str(group), 'developer = harry harryxu')
+        self.assertEqual(str(group), '@developer = harry harryxu')
 
     def test_del_user(self):
         group = gitolite.Group('developer')
         group.add_user('harry')
         group.add_user('flash')
 
-        self.assertEqual(str(group), 'developer = harry flash')
+        self.assertEqual(str(group), '@developer = harry flash')
 
         group.del_user('harry')
 
-        self.assertEqual(str(group), 'developer = flash')
+        self.assertEqual(str(group), '@developer = flash')
 
 class RepoTest(unittest.TestCase):
 
