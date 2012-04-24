@@ -8,11 +8,10 @@ class ConfTest(unittest.TestCase):
 
     def test_misc(self):
         group_admin = gitolite.Group('admin')
-        group_admin.add_user('boss')
+        group_admin.add_users('boss')
 
         group_dev = gitolite.Group('developer')
-        group_dev.add_user('harry')
-        group_dev.add_user('harryxu')
+        group_dev.add_users('harry', 'harryxu')
 
         repo_gitube = gitolite.Repo('gitube')
         repo_gitube.add_permission('RW', '', 'harry', 'harryxu')
@@ -37,23 +36,59 @@ class ConfTest(unittest.TestCase):
         conf.del_repo('test')
         self.assertFalse(conf.has_group('test'))
 
+    def test_parse_conf(self):
+        config = """
+@developers     =   dilbert alice bob
+@interns        =   ashok sitaram
+@staff          =   @interns @developers
+
+repo gitolite tsh gitpod
+    RW+     =   sitaram
+    RW  dev =   alice bob
+    R       =   @all
+
+repo foo
+    RW      =   alice
+"""
+        conf = gitolite.Conf()
+        conf.parse_conf(config)
+
+        # check groups
+        self.assertTrue(conf.has_group('developers'))
+        self.assertTrue(conf.get_group('developers').has_user('bob'))
+
+        self.assertTrue(conf.has_group('staff'))
+        self.assertTrue(conf.get_group('staff').has_user('@interns'))
+
+        # check repos
+        self.assertTrue(conf.has_repo('tsh'))
+        gitpod = conf.get_repo('gitpod')
+        self.assertEqual(gitpod.permissions['sitaram'], 'RW+  = sitaram')
+        self.assertEqual(gitpod.permissions['bob'], 'RW dev = bob')
+        self.assertEqual(gitpod.permissions['alice'], 'RW dev = alice')
+        self.assertEqual(gitpod.permissions['@all'], 'R  = @all')
+
+        self.assertTrue(conf.has_repo('foo'))
+        foo = conf.get_repo('foo')
+        self.assertEqual(foo.permissions['alice'], 'RW  = alice')
+
 class GroupTest(unittest.TestCase):
 
     def test_add_user(self):
         group = gitolite.Group('developer')
-        group.add_user('harry')
-        group.add_user('harryxu')
+        group.add_users('harry')
+        group.add_users('harryxu')
 
         self.assertEqual(str(group), '@developer = harry harryxu')
 
     def test_del_user(self):
         group = gitolite.Group('developer')
-        group.add_user('harry')
-        group.add_user('flash')
+        group.add_users('harry')
+        group.add_users('flash')
 
         self.assertEqual(str(group), '@developer = harry flash')
 
-        group.del_user('harry')
+        group.del_users('harry')
 
         self.assertEqual(str(group), '@developer = flash')
 
@@ -84,8 +119,6 @@ class RepoTest(unittest.TestCase):
 
         self.assertNotRegexpMatches(repo_str, 'RW\s+=\sharry')
         self.assertNotRegexpMatches(repo_str, '-\smaster\s+=\sharry');
-
-
 
 
 if __name__ == '__main__':
