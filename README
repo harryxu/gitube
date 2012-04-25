@@ -5,6 +5,8 @@ Im start working on migrate to gitolite.
 If you want help, see the develop branch.
 And I really need help, send pull requests, please :)
 
+The develop branch is under early development and not usable yet.
+
 The master branch is the old verion of gitube, which using gitosis.
 
 Sponsored by http://bigecko.com
