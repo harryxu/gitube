@@ -2,22 +2,9 @@ Gitube is a simple git repository management web application
 can be deployed on your own server.
 
 Im start working on migrate to gitolite.
-If you want help, see https://github.com/harryxu/gitube/tree/feature/gitolite.
+If you want help, see the develop branch.
 And I really need help, send pull requests, please :)
 
-Install (only in chinse for now)
-https://github.com/harryxu/gitube/wiki/%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E
-
-Requirements
-
-django-authopenid
-http://bitbucket.org/benoitc/django-authopenid/
-
-django-registration
-http://bitbucket.org/ubernostrum/django-registration/
-
-gitosis
-http://scie.nti.st/2007/11/14/hosting-git-repositories-the-easy-and-secure-way
-Just need it's python libs.
+The master branch is the old verion of gitube, which using gitosis.
 
 Sponsored by http://bigecko.com
